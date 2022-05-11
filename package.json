@@ -8,12 +8,14 @@
     "start": "next start",
     "lint": "next lint --dir src",
     "lint:fix": "next lint --dir src .js,.jsx --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier": "prettier **/* --write --ignore-unknown"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "eslint-config-recommended": "^4.1.0",
     "framer-motion": "^6",
     "next": "12.1.6",
     "react": "18.1.0",
