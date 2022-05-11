@@ -1,5 +1,6 @@
 {
   "extends": ["eslint:recommended", "next", "next/core-web-vitals", "prettier"],
   // Memo: add rules when you need
-  "rules": {}
+  "rules": {},
+  "ignorePatterns": ["src/pages/*"]
 }
