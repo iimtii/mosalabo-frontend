@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir pages",
-    "lint:fix": "eslint pages--ext .js,jsx,.ts,.tsx --fix"
+    "lint:fix": "eslint pages--ext .js,jsx,.ts,.tsx --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.8",
@@ -20,6 +21,13 @@
   },
   "devDependencies": {
     "eslint": "8.15.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
+    "prettier": "2.6.2"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
