@@ -14,8 +14,9 @@ export const Heading = () => {
         0px 1px 2px rgba(0, 0, 0, 0.06);
     `,
   };
+
   return (
-    <Center paddingTop={`28px`}>
+    <Center paddingTop={`28px`} paddingBottom={`66px`}>
       <Box
         css={style.box}
         borderRadius={`16px`}
