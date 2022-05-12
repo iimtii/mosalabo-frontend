@@ -6,7 +6,7 @@ import { typography } from "../../styles/common";
 export const Header = () => {
   const style = {
     font: css`
-      ${typography.IBM_PLEX_SANS}
+      ${typography.ibm_title}
     `,
   };
 

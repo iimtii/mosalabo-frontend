@@ -4,10 +4,14 @@ export const colors = {
 };
 
 export const typography = {
-  IBM_PLEX_SANS: `
-    font-family: 'IBM Plex Sans';
+  ibm_title: `
     font-size: 32px;
     font-weight: 600;
     line-height: 48px;
+  `,
+  ibm_heading: `
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
   `,
 };

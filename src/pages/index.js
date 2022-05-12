@@ -1,7 +1,13 @@
 import { Layout } from "../components/common/Layout";
 
+import { Heading } from "../components/Heading";
+
 const Home = () => {
-  return <Layout>Home</Layout>;
+  return (
+    <Layout>
+      <Heading />
+    </Layout>
+  );
 };
 
 export default Home;
