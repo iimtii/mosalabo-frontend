@@ -22,7 +22,7 @@ const Room = () => {
         {!!currentRoom ? (
           <Image
             alt="mosaic"
-            src={currentRoom.theme_image_path}
+            src={currentRoom.themeImagePath}
             width={`390px`}
             height={`500px`}
           />

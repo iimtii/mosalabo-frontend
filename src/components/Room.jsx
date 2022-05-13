@@ -23,15 +23,15 @@ const style = {
   `,
 };
 
-export const Room = ({ id, src, maximum_image }) => {
+export const Room = ({ id, src, maximumImage }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
   const createRoom = async () => {
     try {
       const res = await axios.post("/api/rooms", {
-        theme_image_path: src,
-        maximum_image: maximum_image,
+        themeImagePath: src,
+        maximumImage: maximumImage,
       });
       return res.data.id;
     } catch (e) {
