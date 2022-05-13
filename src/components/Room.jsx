@@ -68,8 +68,8 @@ export const Room = ({ id, src }) => {
                 <Image
                   alt={`selected`}
                   src={src}
-                  width={`280px`}
-                  height={`220px`}
+                  width={`270px`}
+                  height={`350px`}
                 />
               </Center>
             </ModalBody>
