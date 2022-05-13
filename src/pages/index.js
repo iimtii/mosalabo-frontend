@@ -12,6 +12,7 @@ const Home = () => {
   useEffect(() => {
     fetchTemplates();
   }, []);
+
   return (
     <Layout>
       <Heading />
@@ -26,6 +27,7 @@ const Home = () => {
             key={template.id}
             id={template.id}
             src={template.theme_image_path}
+            maximum_image={template.maximum_image}
           />
         ))}
       </Grid>

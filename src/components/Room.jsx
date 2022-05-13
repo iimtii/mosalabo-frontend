@@ -15,6 +15,7 @@ import { css } from "@emotion/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { colors } from "../styles/common";
+import axios from "../axios";
 
 const style = {
   box: css`
@@ -22,14 +23,28 @@ const style = {
   `,
 };
 
-export const Room = ({ id, src }) => {
+export const Room = ({ id, src, maximum_image }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
+  const createRoom = async () => {
+    try {
+      const res = await axios.post("/api/rooms", {
+        theme_image_path: src,
+        maximum_image: maximum_image,
+      });
+      return res.data.id;
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const handleSubmit = () => {
-    router.push({
-      pathname: "/labo/[id]",
-      query: { id: "123" },
+    createRoom().then((res) => {
+      router.push({
+        pathname: "/room/[id]",
+        query: { id: res },
+      });
     });
   };
 

@@ -1,19 +1,22 @@
 import { Box } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Layout } from "../../components/common/Layout";
+import { RoomContext } from "../../contexts/RoomContext";
 
 const Room = () => {
+  const { currentRoom, fetchRoom } = useContext(RoomContext);
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
-    // Todo: room情報をfetch
+    fetchRoom();
+    console.log(currentRoom);
   }, [id]);
 
   return (
     <Layout>
-      <Box>{id}の部屋</Box>
+      <Box>{id}のRoom</Box>
     </Layout>
   );
 };
