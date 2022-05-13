@@ -15,47 +15,45 @@ export const Header = () => {
   const router = useRouter();
 
   return (
-    <header>
-      <Center height={"100px"} marginTop={`40px`}>
-        <Flex gap={`100px`}>
-          <Box>
-            <Link href={"/"}>
-              <a>
-                <Flex gap={`20px`}>
-                  <Flex alignItems={`center`} justifyContent={`center`}>
-                    <Image
-                      alt="logo"
-                      src={`/icons/Logo.svg`}
-                      width={`40px`}
-                      height={`40px`}
-                    />
-                  </Flex>
-                  <Box css={style.font}>Mosalabo</Box>
-                </Flex>
-              </a>
-            </Link>
-          </Box>
-          {router.pathname !== "/" ? (
-            <Flex
-              alignItems={`center`}
-              justifyContent={`center`}
-              paddingTop={`3px`}
-            >
-              <Link href={`/`}>
-                <a>
+    <Center as="header" height={"100px"}>
+      <Flex gap={`100px`}>
+        <Box>
+          <Link href={"/"}>
+            <a>
+              <Flex gap={`20px`}>
+                <Flex alignItems={`center`} justifyContent={`center`}>
                   <Image
-                    alt="home"
-                    src={`/icons/home.svg`}
+                    alt="logo"
+                    src={`/icons/Logo.svg`}
                     width={`40px`}
                     height={`40px`}
-                    css={style.home}
                   />
-                </a>
-              </Link>
-            </Flex>
-          ) : null}
-        </Flex>
-      </Center>
-    </header>
+                </Flex>
+                <Box css={style.font}>Mosalabo</Box>
+              </Flex>
+            </a>
+          </Link>
+        </Box>
+        {router.pathname !== "/" ? (
+          <Flex
+            alignItems={`center`}
+            justifyContent={`center`}
+            paddingTop={`3px`}
+          >
+            <Link href={`/`}>
+              <a>
+                <Image
+                  alt="home"
+                  src={`/icons/home.svg`}
+                  width={`40px`}
+                  height={`40px`}
+                  css={style.home}
+                />
+              </a>
+            </Link>
+          </Flex>
+        ) : null}
+      </Flex>
+    </Center>
   );
 };

@@ -4,7 +4,7 @@ import { createContext, useState } from "react";
 export const RoomContext = createContext();
 
 export const RoomContextProvider = ({ children }) => {
-  const [currentRoom, setCurrentRoom] = useState({});
+  const [currentRoom, setCurrentRoom] = useState(null);
 
   const fetchRoom = async (uuid) => {
     const res = await axios.get(`/api/rooms/${uuid}`);

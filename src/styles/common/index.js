@@ -2,6 +2,7 @@ export const colors = {
   white: "#FFFFFF",
   black: "#000000",
   primary: "#84A6EE",
+  progress: "#61A7EF",
 };
 
 export const typography = {
