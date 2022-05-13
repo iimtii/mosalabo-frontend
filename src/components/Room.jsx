@@ -12,6 +12,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { css } from "@emotion/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { colors } from "../styles/common";
 
@@ -21,13 +22,13 @@ const style = {
   `,
 };
 
-export const Room = () => {
+export const Room = ({ id, src }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
   const handleSubmit = () => {
     router.push({
-      pathname: "/room/[id]",
+      pathname: "/labo/[id]",
       query: { id: "123" },
     });
   };
@@ -40,13 +41,14 @@ export const Room = () => {
         gap={`54px`}
         border={`1px`}
         borderColor={`#E2E8F0`}
-        paddingX={`24px`}
         paddingTop={`40px`}
         paddingBottom={`16px`}
         borderRadius={`12px`}
       >
-        <Box textAlign={`center`}>icon</Box>
-        <Box>
+        <Box textAlign={`center`}>
+          <Image alt={`img${id}`} src={src} width={`120px`} height={`90px`} />
+        </Box>
+        <Box m={`auto`}>
           <Button
             onClick={onOpen}
             bgColor={colors.primary}
@@ -54,15 +56,25 @@ export const Room = () => {
           >
             選ぶ
           </Button>
+        </Box>
 
-          <Modal size={`xs`} isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-              <ModalCloseButton />
-              <ModalBody>
-                <Box paddingY={`30px`}>このテーマでアルバムを作成します。</Box>
-              </ModalBody>
-              <ModalFooter>
+        <Modal size={`xs`} isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalCloseButton />
+            <ModalBody>
+              <Center paddingY={`30px`}>このテーマで作成する？</Center>
+              <Center>
+                <Image
+                  alt={`selected`}
+                  src={src}
+                  width={`280px`}
+                  height={`220px`}
+                />
+              </Center>
+            </ModalBody>
+            <ModalFooter>
+              <Box m={`auto`}>
                 <Button
                   onClick={handleSubmit}
                   bgColor={colors.primary}
@@ -70,10 +82,10 @@ export const Room = () => {
                 >
                   作成
                 </Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
-        </Box>
+              </Box>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Flex>
     </Center>
   );

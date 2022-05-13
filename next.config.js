@@ -9,6 +9,9 @@ const nextConfig = {
     //disable: process.env.NODE_ENV === 'development',
     buildExcludes: [/.*\.js\.map/],
   },
+  images: {
+    domains: ["www.nojima.co.jp", "www.kyotango.gr.jp", "image.4meee.com"],
+  },
   reactStrictMode: true,
 };
 
