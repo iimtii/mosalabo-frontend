@@ -45,7 +45,9 @@ const Room = () => {
             alt="mosaic"
             src={currentRoom?.mosaicImagePath}
             width={`390px`}
-            height={`500px`}
+            height={`300px`}
+            // layout={`fill`}
+            objectFit={`contain`}
           />
         ) : null}
       </Center>

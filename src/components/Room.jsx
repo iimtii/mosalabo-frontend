@@ -53,7 +53,7 @@ export const Room = ({ id, src, maximumImage }) => {
       <Flex
         css={style.box}
         flexDirection={`column`}
-        gap={`54px`}
+        gap={`8px`}
         border={`1px`}
         borderColor={`#E2E8F0`}
         paddingTop={`40px`}
@@ -61,7 +61,14 @@ export const Room = ({ id, src, maximumImage }) => {
         borderRadius={`12px`}
       >
         <Box textAlign={`center`}>
-          <Image alt={`img${id}`} src={src} width={`120px`} height={`90px`} />
+          <Image
+            alt={`img${id}`}
+            src={src}
+            width={`120px`}
+            height={`150px`}
+            // layout={`fill`}
+            objectFit={`contain`}
+          />
         </Box>
         <Box m={`auto`}>
           <Button
@@ -83,6 +90,8 @@ export const Room = ({ id, src, maximumImage }) => {
                 <Image
                   alt={`selected`}
                   src={src}
+                  // layout={`fill`}
+                  objectFit={`contain`}
                   width={`270px`}
                   height={`350px`}
                 />
