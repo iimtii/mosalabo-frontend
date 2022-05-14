@@ -10,7 +10,12 @@ const nextConfig = {
     buildExcludes: [/.*\.js\.map/],
   },
   images: {
-    domains: ["www.nojima.co.jp", "www.kyotango.gr.jp", "image.4meee.com"],
+    domains: [
+      "www.nojima.co.jp",
+      "www.kyotango.gr.jp",
+      "image.4meee.com",
+      "www.picturemosaics.com",
+    ],
   },
   reactStrictMode: true,
 };

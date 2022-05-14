@@ -5,7 +5,8 @@ export default function handler(req, res) {
       "https://www.nojima.co.jp/support/wp-content/uploads/2020/01/Photo-Tips-19.jpg",
     numberOfImage: 0,
     maximumImage: 250,
-    mosaicImagePath: null,
+    mosaicImagePath:
+      "https://www.picturemosaics.com/blog/wp-content/uploads/2015/08/hand-heart_mosaic.jpg",
     createdAt: "2022-05-12T12:32:36Z",
   });
 }

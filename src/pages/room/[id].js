@@ -1,14 +1,35 @@
-import { Box, Button, Flex, Progress } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverTrigger,
+  Progress,
+  useDisclosure,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useContext } from "react";
 import { Footer } from "../../components/common/Footer";
 import { Layout } from "../../components/common/Layout";
+import { UploadModal } from "../../components/uploadModal";
 import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
 
 const Room = () => {
   const { currentRoom, fetchRoom } = useContext(RoomContext);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
   const { id } = router.query;
 
@@ -18,16 +39,16 @@ const Room = () => {
 
   return (
     <Layout>
-      <Box>
+      <Center>
         {!!currentRoom ? (
           <Image
             alt="mosaic"
-            src={currentRoom.themeImagePath}
+            src={currentRoom?.mosaicImagePath}
             width={`390px`}
             height={`500px`}
           />
         ) : null}
-      </Box>
+      </Center>
       <Flex paddingY={`44px`} justifyContent={`center`}>
         <Progress height={`40px`} width={`288px`} value={70} isAnimated />
       </Flex>
@@ -38,6 +59,7 @@ const Room = () => {
             borderRadius={`16px`}
             color={colors.white}
             bgGradient={`linear(to-r, #FBA49F 2.08%, #CBA4EA 45.11%, #58A6EF 100%)`}
+            onClick={onOpen}
           >
             写真を
             <br />
@@ -45,19 +67,33 @@ const Room = () => {
           </Button>
         </Box>
         <Box>
-          <Button
-            paddingY={`30px`}
-            borderRadius={`16px`}
-            color={colors.white}
-            bgGradient={`linear(to-r, #FBA49F 2.08%, #CBA4EA 45.11%, #58A6EF 100%)`}
-          >
-            このラボを
-            <br />
-            シェア
-          </Button>
+          <Popover placement="top">
+            <PopoverTrigger>
+              <Button
+                paddingY={`30px`}
+                borderRadius={`16px`}
+                color={colors.white}
+                bgGradient={`linear(to-r, #FBA49F 2.08%, #CBA4EA 45.11%, #58A6EF 100%)`}
+              >
+                このラボを
+                <br />
+                シェア
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <PopoverBody>
+                {/* share linkの中身 */}
+                <Box>share link</Box>
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
         </Box>
       </Flex>
       <Footer />
+
+      <UploadModal isOpen={isOpen} onClose={onClose} />
     </Layout>
   );
 };
