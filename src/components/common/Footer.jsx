@@ -2,6 +2,7 @@ import { Button, Center, Flex } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
+import { INSTAGRAM_URL } from "../../constants/common";
 import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
 
@@ -57,7 +58,7 @@ export const Footer = () => {
             height={`40px`}
           />
         </Button>
-        <Link href="https://www.instagram.com/" passHref>
+        <Link href={INSTAGRAM_URL} passHref>
           <a target="_blank" style={{ display: "flex" }}>
             <Image
               alt="save"
