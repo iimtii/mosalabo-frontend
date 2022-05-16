@@ -1,4 +1,5 @@
 import {
+  AspectRatio,
   Box,
   Button,
   Center,
@@ -28,18 +29,20 @@ const Room = () => {
 
   return (
     <Layout>
-      <Center>
+      <Box>
         {!!currentRoom ? (
-          <Image
-            alt="mosaic"
-            src={currentRoom?.mosaicImagePath}
-            width={`390px`}
-            height={`300px`}
-            // layout={`fill`}
-            objectFit={`contain`}
-          />
+          <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
+            <Image
+              alt="mosaic"
+              src={currentRoom?.mosaicImagePath}
+              // width={`390px`}
+              // height={`300px`}
+              layout={`fill`}
+              objectFit={`cover`}
+            />
+          </AspectRatio>
         ) : null}
-      </Center>
+      </Box>
       <Flex paddingY={`44px`} justifyContent={`center`}>
         <Progress height={`40px`} width={`288px`} value={70} isAnimated />
       </Flex>
