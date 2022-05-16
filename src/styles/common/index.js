@@ -2,6 +2,10 @@ export const colors = {
   white: "#FFFFFF",
   black: "#000000",
   primary: "#84A6EE",
+  light_gray: "#E2E8F0",
+  pink: "#FBA49F",
+  purple: "#CBA4EA",
+  blue: "#58A6EF",
   progress: "#61A7EF",
 };
 

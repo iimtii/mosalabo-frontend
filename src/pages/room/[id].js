@@ -3,18 +3,6 @@ import {
   Button,
   Center,
   Flex,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverTrigger,
   Progress,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -23,6 +11,7 @@ import { useRouter } from "next/router";
 import { useEffect, useContext } from "react";
 import { Footer } from "../../components/common/Footer";
 import { Layout } from "../../components/common/Layout";
+import { ShareButton } from "../../components/ShareButton";
 import { UploadModal } from "../../components/uploadModal";
 import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
@@ -60,7 +49,7 @@ const Room = () => {
             paddingY={`30px`}
             borderRadius={`16px`}
             color={colors.white}
-            bgGradient={`linear(to-r, #FBA49F 2.08%, #CBA4EA 45.11%, #58A6EF 100%)`}
+            bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
             onClick={onOpen}
           >
             写真を
@@ -69,28 +58,7 @@ const Room = () => {
           </Button>
         </Box>
         <Box>
-          <Popover placement="top">
-            <PopoverTrigger>
-              <Button
-                paddingY={`30px`}
-                borderRadius={`16px`}
-                color={colors.white}
-                bgGradient={`linear(to-r, #FBA49F 2.08%, #CBA4EA 45.11%, #58A6EF 100%)`}
-              >
-                このラボを
-                <br />
-                シェア
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverBody>
-                {/* share linkの中身 */}
-                <Box>share link</Box>
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
+          <ShareButton />
         </Box>
       </Flex>
       <Footer />

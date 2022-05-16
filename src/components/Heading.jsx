@@ -9,7 +9,6 @@ export const Heading = () => {
       color: ${colors.white}
     `,
     box: css`
-      border: 1px solid #e2e8f0;
       box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1),
         0px 1px 2px rgba(0, 0, 0, 0.06);
     `,
@@ -20,7 +19,10 @@ export const Heading = () => {
       <Box
         css={style.box}
         borderRadius={`16px`}
-        bgGradient="linear(to-r, #FBA49F 2.08%, #CBA4EA 45.11%, #58A6EF 100%)"
+        borderColor={colors.light_gray}
+        borderStyle={`solid`}
+        borderWidth={`1px`}
+        bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
       >
         <Box css={style.font} paddingX={`36px`} paddingY={`8px`}>
           モザイクにするテーマ
