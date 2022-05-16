@@ -42,7 +42,14 @@ export const Footer = () => {
   };
 
   return (
-    <Center height={`104px`} as="footer" width={`100%`} zIndex={`banner`}>
+    <Center
+      height={`104px`}
+      as="footer"
+      width={`100%`}
+      zIndex={`banner`}
+      position={`fixed`}
+      bottom={`0`}
+    >
       <Flex gap={`68px`}>
         <Button
           bgColor={colors.white}
