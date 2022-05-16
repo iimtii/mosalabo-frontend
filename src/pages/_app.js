@@ -1,4 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { ImagesContextProvider } from "../contexts/ImagesContext";
 import { RoomContextProvider } from "../contexts/RoomContext";
 import { TemplateContextProvider } from "../contexts/TemplateContext";
 
@@ -7,7 +8,9 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider>
       <TemplateContextProvider>
         <RoomContextProvider>
-          <Component {...pageProps} />
+          <ImagesContextProvider>
+            <Component {...pageProps} />
+          </ImagesContextProvider>
         </RoomContextProvider>
       </TemplateContextProvider>
     </ChakraProvider>

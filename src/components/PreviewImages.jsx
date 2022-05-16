@@ -1,9 +1,16 @@
 import Image from "next/image";
 import { AspectRatio, Box, CloseButton } from "@chakra-ui/react";
+import { useContext } from "react";
+import { ImagesContext } from "../contexts/ImagesContext";
 
-export const PreviewImages = ({ selectedImages }) => {
+export const PreviewImages = () => {
+  const { selectedImages, deleteImage } = useContext(ImagesContext);
+  const handleDelete = (index) => {
+    deleteImage(index);
+  };
   return (
     <>
+      {/* Todo: indexではなく、objectのidをkeyにする */}
       {selectedImages?.map((img, index) => (
         <Box key={index} position={`relative`} paddingTop={8}>
           <AspectRatio width={`300px`} ratio={4 / 3}>
@@ -23,6 +30,7 @@ export const PreviewImages = ({ selectedImages }) => {
             borderStyle={`solid`}
             borderRadius={`full`}
             size={`md`}
+            onClick={() => handleDelete(index)}
           />
         </Box>
       ))}

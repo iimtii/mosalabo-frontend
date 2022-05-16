@@ -2,7 +2,6 @@ import {
   AspectRatio,
   Box,
   Button,
-  Center,
   Flex,
   Progress,
   useDisclosure,
@@ -35,8 +34,6 @@ const Room = () => {
             <Image
               alt="mosaic"
               src={currentRoom?.mosaicImagePath}
-              // width={`390px`}
-              // height={`300px`}
               layout={`fill`}
               objectFit={`cover`}
             />
@@ -44,6 +41,7 @@ const Room = () => {
         ) : null}
       </Box>
       <Flex paddingY={`44px`} justifyContent={`center`}>
+        {/* Todo: apiから取得されるdataからvalueを生成 */}
         <Progress height={`40px`} width={`288px`} value={70} isAnimated />
       </Flex>
       <Flex justifyContent={`center`} gap={10}>

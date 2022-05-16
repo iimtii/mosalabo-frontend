@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Box, Center } from "@chakra-ui/react";
 import { colors, typography } from "../styles/common";
 import { MAX_NUMBER_OF_IMAGES } from "../constants/room";
@@ -6,13 +6,14 @@ import { css } from "@emotion/react";
 import { PreviewImages } from "./PreviewImages";
 import { isSmartPhone } from "../utils/isSmartPhone";
 import Image from "next/image";
+import { ImagesContext } from "../contexts/ImagesContext";
 
 // ref: https://www.section.io/engineering-education/nextjs-dnd-file-upload/
-export const FilesUpload = ({ selectedImages, setSelectedImages }) => {
-  // isDropZoneでcssを変える??
+export const FilesUpload = () => {
+  // isDropZoneで枠のcssを変える??
   const [isDropZone, setDropZone] = useState(false);
   const [hasError, setError] = useState(false);
-  console.log(hasError);
+  const { selectedImages, setSelectedImages } = useContext(ImagesContext);
 
   const onChangeImages = (e) => {
     let files = [...e.target.files];
@@ -137,7 +138,7 @@ export const FilesUpload = ({ selectedImages, setSelectedImages }) => {
           </label>
         </Box>
       </Box>
-      <PreviewImages selectedImages={selectedImages} />
+      <PreviewImages />
     </>
   );
 };

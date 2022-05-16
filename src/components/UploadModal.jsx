@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import {
   Box,
   Button,
@@ -11,16 +11,17 @@ import {
 } from "@chakra-ui/react";
 import { colors } from "../styles/common";
 import { FilesUpload } from "./FIlesUpload";
+import { ImagesContext } from "../contexts/ImagesContext";
 
 export const UploadModal = ({ isOpen, onClose }) => {
-  const [selectedImages, setSelectedImages] = useState([]);
+  const { selectedImages, resetImages } = useContext(ImagesContext);
   const handleUpload = () => {
     console.log("upload");
     onCustomClose();
   };
 
   const onCustomClose = () => {
-    setSelectedImages([]);
+    resetImages();
     onClose();
   };
 
@@ -30,17 +31,14 @@ export const UploadModal = ({ isOpen, onClose }) => {
       <ModalContent>
         <ModalCloseButton />
         <ModalBody>
-          <FilesUpload
-            selectedImages={selectedImages}
-            setSelectedImages={setSelectedImages}
-          />
+          <FilesUpload />
         </ModalBody>
         <ModalFooter>
           <Box m={`auto`}>
             <Button
               bgColor={colors.primary}
               color={colors.white}
-              isDisabled={!selectedImages}
+              isDisabled={!selectedImages || selectedImages.length === 0}
               onClick={handleUpload}
             >
               アップロード
