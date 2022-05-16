@@ -12,11 +12,26 @@ import {
 import { colors } from "../styles/common";
 import { FilesUpload } from "./FIlesUpload";
 import { ImagesContext } from "../contexts/ImagesContext";
+import axios from "../axios";
+import { useRouter } from "next/router";
 
 export const UploadModal = ({ isOpen, onClose }) => {
   const { selectedImages, resetImages } = useContext(ImagesContext);
-  const handleUpload = () => {
-    console.log("upload");
+  const router = useRouter();
+
+  const handleUpload = async () => {
+    const roomId = router.asPath.split("/").pop();
+
+    // Todo: 画像をbase64に変更
+    console.log(selectedImages);
+    const images = null;
+    await axios
+      .post("/api/images", {
+        roomId,
+        images,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
     onCustomClose();
   };
 
