@@ -11,7 +11,6 @@ export const Footer = () => {
 
   const onSaveMosaic = async () => {
     await fetch(currentRoom.mosaicImagePath).then((response) => {
-      console.log(response);
       const blob = response.blob();
       const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement("a");
