@@ -10,16 +10,17 @@ export const Footer = () => {
   const { currentRoom } = useContext(RoomContext);
 
   const onSaveMosaic = async () => {
-    await fetch(currentRoom.mosaicImagePath).then((response) => {
-      const blob = response.blob();
-      const url = window.URL.createObjectURL(new Blob([blob]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", `mosaic.jpeg`);
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
-    });
+    await fetch(currentRoom.mosaicImagePath)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", `mosaic.jpg`);
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode.removeChild(link);
+      });
   };
 
   return (
