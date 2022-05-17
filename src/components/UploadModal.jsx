@@ -4,7 +4,6 @@ import {
   Button,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalOverlay,
@@ -41,22 +40,26 @@ export const UploadModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onCustomClose}>
+    <Modal isOpen={isOpen} onClose={onCustomClose} size={`xl`}>
       <ModalOverlay />
       <ModalContent>
-        <ModalCloseButton />
         <ModalBody>
           <FilesUpload />
         </ModalBody>
         <ModalFooter>
           <Box m={`auto`}>
             <Button
-              bgColor={colors.primary}
+              bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
               color={colors.white}
               isDisabled={!selectedImages || selectedImages.length === 0}
               onClick={handleUpload}
+              width={`full`}
             >
-              アップロード
+              Upload
+            </Button>
+
+            <Button color={colors.black} width={`100%`} onClick={onClose}>
+              Cancel
             </Button>
           </Box>
         </ModalFooter>
