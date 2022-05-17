@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AspectRatio, Box, CloseButton } from "@chakra-ui/react";
+import { AspectRatio, Box, CloseButton, Flex } from "@chakra-ui/react";
 import { useContext } from "react";
 import { ImagesContext } from "../contexts/ImagesContext";
 
@@ -11,29 +11,37 @@ export const PreviewImages = () => {
   return (
     <>
       {/* Todo: indexではなく、objectのidをkeyにする */}
-      {selectedImages?.map((img, index) => (
-        <Box key={index} position={`relative`} paddingTop={8}>
-          <AspectRatio width={`300px`} ratio={4 / 3}>
-            <Image
-              alt={`img${index}`}
-              src={img.data}
-              layout={`fill`}
-              objectFit={`cover`}
+      <Flex minWidth="max-content" alignItems="center" gap="2">
+        {selectedImages?.map((img, index) => (
+          <Box
+            key={index}
+            position={`relative`}
+            paddingTop={8}
+            borderRadius={`16px`}
+          >
+            <AspectRatio width={`70px`} ratio={1 / 1}>
+              <Image
+                alt={`img${index}`}
+                src={img.data}
+                layout={`fill`}
+                objectFit={`cover`}
+              />
+            </AspectRatio>
+            {/* <Box>{img.name}</Box> */}
+            <CloseButton
+              position={`absolute`}
+              right={`4%`}
+              top={`35%`}
+              border={`2px`}
+              borderStyle={`solid`}
+              borderRadius={`full`}
+              size={`xs`}
+              onClick={() => handleDelete(index)}
+              bgColor={`white`}
             />
-          </AspectRatio>
-          <Box>{img.name}</Box>
-          <CloseButton
-            position={`absolute`}
-            right={`8%`}
-            top={`4%`}
-            border={`1px`}
-            borderStyle={`solid`}
-            borderRadius={`full`}
-            size={`md`}
-            onClick={() => handleDelete(index)}
-          />
-        </Box>
-      ))}
+          </Box>
+        ))}
+      </Flex>
     </>
   );
 };
