@@ -41,12 +41,7 @@ export const ShareButton = () => {
         シェア
       </Button>
 
-      <Modal
-        size={`xl`}
-        isOpen={isOpen}
-        // pos={`absolute`}
-        // marginTop={`200`}
-      >
+      <Modal size={`xl`} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalBody>
@@ -75,37 +70,5 @@ export const ShareButton = () => {
         </ModalContent>
       </Modal>
     </>
-
-    // <Popover placement="top">
-    //   <PopoverTrigger>
-    //     <Button
-    //       paddingY={`30px`}
-    //       borderRadius={`16px`}
-    //       color={colors.white}
-    //       bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
-    //     >
-    //       このラボを
-    //       <br />
-    //       シェア
-    //     </Button>
-    //   </PopoverTrigger>
-    //   <PopoverContent>
-    //     <PopoverArrow />
-    //     <PopoverCloseButton />
-    //     <PopoverBody>
-    //       {/* Todo: share linkのdesign書く */}
-    //       <Box>
-    //         <Button
-    //           color={colors.white}
-    //           bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
-    //           width={`80%`}
-    //           onClick={copyLink}
-    //         >
-    //           Copy Link
-    //           </Button>
-    //       </Box>
-    //     </PopoverBody>
-    //   </PopoverContent>
-    // </Popover>
   );
 };
