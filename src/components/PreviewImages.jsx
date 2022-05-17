@@ -16,7 +16,7 @@ export const PreviewImages = () => {
           <AspectRatio width={`300px`} ratio={4 / 3}>
             <Image
               alt={`img${index}`}
-              src={URL.createObjectURL(img)}
+              src={img.data}
               layout={`fill`}
               objectFit={`cover`}
             />

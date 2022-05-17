@@ -10,7 +10,7 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { colors } from "../styles/common";
-import { FilesUpload } from "./FIlesUpload";
+import { FilesUpload } from "./FilesUpload";
 import { ImagesContext } from "../contexts/ImagesContext";
 import axios from "../axios";
 import { useRouter } from "next/router";

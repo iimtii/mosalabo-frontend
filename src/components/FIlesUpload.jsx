@@ -10,10 +10,25 @@ import { ImagesContext } from "../contexts/ImagesContext";
 
 // ref: https://www.section.io/engineering-education/nextjs-dnd-file-upload/
 export const FilesUpload = () => {
-  // isDropZoneで枠のcssを変える??
+  // Memo: isDropZoneで枠のcssを変える??
   const [isDropZone, setDropZone] = useState(false);
   const [hasError, setError] = useState(false);
   const { selectedImages, setSelectedImages } = useContext(ImagesContext);
+
+  const convertToBase64 = (f) => {
+    // eslint-disable-next-line no-undef
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onabort = reject;
+      reader.onload = (e) => {
+        resolve({
+          name: f.name,
+          data: e.target.result,
+        });
+      };
+      reader.readAsDataURL(f);
+    });
+  };
 
   const onChangeImages = (e) => {
     let files = [...e.target.files];
@@ -26,7 +41,13 @@ export const FilesUpload = () => {
         setError(true);
         return;
       }
-      setSelectedImages(selectedImages.concat(files));
+      convertToBase64(files[0])
+        .then((res) => {
+          setSelectedImages(selectedImages.concat(res));
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
   };
 
@@ -67,7 +88,15 @@ export const FilesUpload = () => {
         setError(true);
         return;
       }
-      setSelectedImages(selectedImages.concat(files));
+
+      // eslint-disable-next-line no-undef
+      Promise.all(files.map((f) => convertToBase64(f)))
+        .then((res) => {
+          setSelectedImages(selectedImages.concat(res));
+        })
+        .catch((e) => {
+          console.log(e);
+        });
       setDropZone(false);
     }
   };
