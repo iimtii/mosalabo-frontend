@@ -15,6 +15,7 @@ const nextConfig = {
       "www.kyotango.gr.jp",
       "image.4meee.com",
       "www.picturemosaics.com",
+      "encrypted-tbn0.gstatic.com",
     ],
   },
   reactStrictMode: true,
