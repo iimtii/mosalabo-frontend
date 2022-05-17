@@ -7,7 +7,8 @@ export const RoomContext = createContext();
 
 export const RoomContextProvider = ({ children }) => {
   const [currentRoom, setCurrentRoom] = useState(null);
-  const { updateProgressBar } = useContext(ProgressBarContext);
+  const { updateProgressBar, setIndeterminate } =
+    useContext(ProgressBarContext);
   const [isLoading, setLoading] = useState(false);
 
   const fetchRoom = async (uuid) => {
@@ -20,6 +21,7 @@ export const RoomContextProvider = ({ children }) => {
     await sleep(2000);
     setCurrentRoom({ ...data });
     updateProgressBar(data);
+    setIndeterminate(true);
   };
 
   return (

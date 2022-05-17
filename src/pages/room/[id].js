@@ -16,11 +16,13 @@ import { UploadModal } from "../../components/uploadModal";
 import { ProgressBarContext } from "../../contexts/ProgressBarContext";
 import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
+import { motion } from "framer-motion";
 
 const Room = () => {
   const { currentRoom, fetchRoom, isLoading } = useContext(RoomContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { progressValue, hasStripe } = useContext(ProgressBarContext);
+  const { progressValue, hasStripe, isIndeterminate } =
+    useContext(ProgressBarContext);
   const router = useRouter();
   const { id } = router.query;
 
@@ -32,6 +34,7 @@ const Room = () => {
 
   return (
     <Layout>
+      {/* Todo: over layでloading gifを流す */}
       <Loading />
       <Box>
         {!!currentRoom ? (
@@ -47,12 +50,17 @@ const Room = () => {
       </Box>
       <Flex paddingY={`44px`} justifyContent={`center`}>
         {/* Todo: animation from prev state to next state */}
+        {/* ref: https://github.com/chakra-ui/chakra-ui/issues/68 */}
         <Progress
+          as={motion.div}
           height={`40px`}
           width={`288px`}
           value={progressValue}
           isAnimated={true}
           hasStripe={hasStripe}
+          isIndeterminate={isIndeterminate}
+          transition={`ease`}
+          transitionDuration={`500ms`}
         />
       </Flex>
       <Flex justifyContent={`center`} gap={10}>
