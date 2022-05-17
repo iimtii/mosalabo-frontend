@@ -14,25 +14,32 @@ import { FilesUpload } from "./FilesUpload";
 import { ImagesContext } from "../contexts/ImagesContext";
 import axios from "../axios";
 import { useRouter } from "next/router";
+import { RoomContext } from "../contexts/RoomContext";
+// import { sleep } from '../utils/sleep';
 
 export const UploadModal = ({ isOpen, onClose }) => {
   const { selectedImages, resetImages } = useContext(ImagesContext);
+  const { updateRoom, setLoading } = useContext(RoomContext);
+
   const router = useRouter();
 
   const handleUpload = async () => {
     const roomId = router.asPath.split("/").pop();
-
-    // Todo: 画像をbase64に変更
-    console.log(selectedImages);
-    const images = null;
+    setLoading(true);
     await axios
       .post("/api/images", {
         roomId,
-        images,
+        images: selectedImages,
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-    onCustomClose();
+      .then(async (res) => {
+        onCustomClose();
+        // await sleep(1000);
+        await updateRoom(res.data);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const onCustomClose = () => {

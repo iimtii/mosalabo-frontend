@@ -13,12 +13,14 @@ import { Footer } from "../../components/common/Footer";
 import { Layout } from "../../components/common/Layout";
 import { ShareButton } from "../../components/ShareButton";
 import { UploadModal } from "../../components/uploadModal";
+import { ProgressBarContext } from "../../contexts/ProgressBarContext";
 import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
 
 const Room = () => {
-  const { currentRoom, fetchRoom } = useContext(RoomContext);
+  const { currentRoom, fetchRoom, isLoading } = useContext(RoomContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { progressValue, hasStripe } = useContext(ProgressBarContext);
   const router = useRouter();
   const { id } = router.query;
 
@@ -26,8 +28,11 @@ const Room = () => {
     fetchRoom();
   }, [id]);
 
+  const Loading = () => (isLoading ? <Box>Loading...</Box> : null);
+
   return (
     <Layout>
+      <Loading />
       <Box>
         {!!currentRoom ? (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
@@ -41,8 +46,14 @@ const Room = () => {
         ) : null}
       </Box>
       <Flex paddingY={`44px`} justifyContent={`center`}>
-        {/* Todo: apiから取得されるdataからvalueを生成 */}
-        <Progress height={`40px`} width={`288px`} value={70} isAnimated />
+        {/* Todo: animation from prev state to next state */}
+        <Progress
+          height={`40px`}
+          width={`288px`}
+          value={progressValue}
+          isAnimated={true}
+          hasStripe={hasStripe}
+        />
       </Flex>
       <Flex justifyContent={`center`} gap={10}>
         <Box>
