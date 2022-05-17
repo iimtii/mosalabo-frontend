@@ -10,35 +10,16 @@ export const Footer = () => {
   const { currentRoom } = useContext(RoomContext);
 
   const onSaveMosaic = async () => {
-    // Todo: 画像データをfetchしてdownload(okがfalseになっている)
-    console.log(currentRoom.mosaicImagePath);
-    await fetch(currentRoom.mosaicImagePath, { mode: "no-cors" }).then((res) =>
-      console.log(res.ok),
-    );
-
-    // .then((response) => response.blob())
-    // .then((blob) => {
-    //   console.log(blob)
-    // Create blob link to download
-    // const url = window.URL.createObjectURL(
-    //   new Blob([blob]),
-    // );
-    // const link = document.createElement('a');
-    // link.href = url;
-    // link.setAttribute(
-    //   'download',
-    //   `test.jpg`,
-    // );
-
-    // // Append to html link element page
-    // document.body.appendChild(link);
-
-    // // Start download
-    // link.click();
-
-    // // Clean up and remove the link
-    // link.parentNode.removeChild(link);
-    // });
+    await fetch(currentRoom.mosaicImagePath).then((response) => {
+      const blob = response.blob();
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `mosaic.jpeg`);
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    });
   };
 
   return (

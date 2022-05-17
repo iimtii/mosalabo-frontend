@@ -6,7 +6,7 @@ export default function handler(req, res) {
     numberOfImage: 0,
     maximumImage: 250,
     mosaicImagePath:
-      "https://www.picturemosaics.com/blog/wp-content/uploads/2015/08/hand-heart_mosaic.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbAoLAFerZhLlbfmiN9fi6z1xOxjaYRejmwOt8bR31aJPUvcf06dqdDOnMlWByTvUr6yk&usqp=CAU",
     createdAt: "2022-05-12T12:32:36Z",
   });
 }
