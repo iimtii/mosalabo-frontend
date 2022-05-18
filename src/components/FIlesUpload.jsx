@@ -22,7 +22,7 @@ export const FilesUpload = () => {
       reader.onabort = reject;
       reader.onload = (e) => {
         resolve({
-          name: f.name,
+          filename: f.name,
           data: e.target.result,
         });
       };
@@ -163,6 +163,7 @@ export const FilesUpload = () => {
               onChange={onChangeImages}
               name="images"
               css={style.input}
+              accept="image/png, image/jpeg, image/jpg"
             />
           </label>
         </Box>

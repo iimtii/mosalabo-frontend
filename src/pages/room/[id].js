@@ -5,6 +5,13 @@ import {
   Flex,
   Progress,
   useDisclosure,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+  ModalFocusScope,
+  ModalContextProvider,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -25,19 +32,36 @@ const Room = () => {
     useContext(ProgressBarContext);
   const router = useRouter();
   const { id } = router.query;
+  const remainNumner = currentRoom.maximumImage - currentRoom.numberOfImage;
 
   useEffect(() => {
-    fetchRoom();
+    if (!id) return;
+    fetchRoom(id);
   }, [id]);
 
-  const Loading = () => (isLoading ? <Box>Loading...</Box> : null);
+  const Loading = () =>
+    isLoading ? (
+      <Modal isOpen={1} isCentered={true} size={`xs`}>
+        <ModalOverlay />
+        <ModalContent>
+          <AspectRatio ratio={1 / 1} zIndex={`1000`} top={`20%`} opacity={`1`}>
+            <Image
+              layout={`fill`}
+              objectFit={`cover`}
+              src="/gif/loading.gif"
+              alt="loading_gif"
+            />
+          </AspectRatio>
+        </ModalContent>
+      </Modal>
+    ) : null;
 
   return (
     <Layout>
       {/* Todo: over layでloading gifを流す */}
       <Loading />
       <Box>
-        {!!currentRoom ? (
+        {!!currentRoom && !!currentRoom.mosaicImagePath ? (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
             <Image
               alt="mosaic"
@@ -46,22 +70,39 @@ const Room = () => {
               objectFit={`cover`}
             />
           </AspectRatio>
+        ) : !!currentRoom && !!currentRoom.themeImagePath ? (
+          <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
+            <Image
+              alt="mosaic"
+              src={currentRoom?.themeImagePath}
+              layout={`fill`}
+              objectFit={`cover`}
+              style={{ opacity: 0.4 }}
+            />
+          </AspectRatio>
         ) : null}
       </Box>
-      <Flex paddingY={`44px`} justifyContent={`center`}>
+      <Flex
+        paddingY={`44px`}
+        justifyContent={`center`}
+        flexDirection={`column`}
+      >
         {/* Todo: animation from prev state to next state */}
         {/* ref: https://github.com/chakra-ui/chakra-ui/issues/68 */}
-        <Progress
-          as={motion.div}
-          height={`40px`}
-          width={`288px`}
-          value={progressValue}
-          isAnimated={true}
-          hasStripe={hasStripe}
-          isIndeterminate={isIndeterminate}
-          transition={`ease`}
-          transitionDuration={`500ms`}
-        />
+        <Box margin={`auto`}>
+          <Progress
+            as={motion.div}
+            height={`40px`}
+            width={`288px`}
+            value={progressValue}
+            isAnimated={true}
+            hasStripe={hasStripe}
+            isIndeterminate={isIndeterminate}
+            transition={`ease`}
+            transitionDuration={`500ms`}
+          />
+        </Box>
+        <Box m={`auto`}>アート完成まで：{remainNumner}枚</Box>
       </Flex>
       <Flex justifyContent={`center`} gap={10}>
         <Box>

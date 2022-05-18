@@ -61,11 +61,14 @@ export const UploadModal = ({ isOpen, onClose }) => {
               isDisabled={!selectedImages || selectedImages.length === 0}
               onClick={handleUpload}
               width={`full`}
+              marginBottom={`8px`}
+
+              //{todo} disabled時のhoverアクションを消す
             >
               Upload
             </Button>
 
-            <Button color={colors.black} width={`100%`} onClick={onClose}>
+            <Button color={colors.black} width={`100%`} onClick={onCustomClose}>
               Cancel
             </Button>
           </Box>
