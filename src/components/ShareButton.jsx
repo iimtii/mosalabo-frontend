@@ -41,7 +41,7 @@ export const ShareButton = () => {
         シェア
       </Button>
 
-      <Modal size={`xl`} isOpen={isOpen}>
+      <Modal size={`xl`} isOpen={isOpen} isCentered={true}>
         <ModalOverlay />
         <ModalContent>
           <ModalBody>
