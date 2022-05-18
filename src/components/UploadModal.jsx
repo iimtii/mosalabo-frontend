@@ -54,6 +54,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
               isDisabled={!selectedImages || selectedImages.length === 0}
               onClick={handleUpload}
               width={`full`}
+              marginBottom={`8px`}
             >
               Upload
             </Button>
