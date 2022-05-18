@@ -27,7 +27,8 @@ const Room = () => {
   const { id } = router.query;
 
   useEffect(() => {
-    fetchRoom();
+    if (!id) return;
+    fetchRoom(id);
   }, [id]);
 
   const Loading = () => (isLoading ? <Box>Loading...</Box> : null);
@@ -37,13 +38,23 @@ const Room = () => {
       {/* Todo: over layでloading gifを流す */}
       <Loading />
       <Box>
-        {!!currentRoom ? (
+        {!!currentRoom && !!currentRoom.mosaicImagePath ? (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
             <Image
               alt="mosaic"
               src={currentRoom?.mosaicImagePath}
               layout={`fill`}
               objectFit={`cover`}
+            />
+          </AspectRatio>
+        ) : !!currentRoom && !!currentRoom.themeImagePath ? (
+          <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
+            <Image
+              alt="mosaic"
+              src={currentRoom?.themeImagePath}
+              layout={`fill`}
+              objectFit={`cover`}
+              style={{ opacity: 0.4 }}
             />
           </AspectRatio>
         ) : null}

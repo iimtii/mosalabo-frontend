@@ -163,6 +163,7 @@ export const FilesUpload = () => {
               onChange={onChangeImages}
               name="images"
               css={style.input}
+              accept="image/png, image/jpeg, image/jpg"
             />
           </label>
         </Box>
