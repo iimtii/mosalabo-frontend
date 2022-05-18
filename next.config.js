@@ -10,13 +10,7 @@ const nextConfig = {
     buildExcludes: [/.*\.js\.map/],
   },
   images: {
-    domains: [
-      "www.nojima.co.jp",
-      "www.kyotango.gr.jp",
-      "image.4meee.com",
-      "www.picturemosaics.com",
-      "encrypted-tbn0.gstatic.com",
-    ],
+    domains: ["mosalabo-images.s3.ap-northeast-1.amazonaws.com"],
   },
   reactStrictMode: true,
 };

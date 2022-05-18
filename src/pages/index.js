@@ -27,6 +27,7 @@ const Home = () => {
             key={template.id}
             id={template.id}
             src={template.themeImagePath}
+            iconSrc={template.iconImagePath}
             maximumImage={template.maximumImage}
           />
         ))}

@@ -23,7 +23,7 @@ const style = {
   `,
 };
 
-export const Room = ({ id, src, maximumImage }) => {
+export const Room = ({ id, src, iconSrc, maximumImage }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
@@ -63,7 +63,7 @@ export const Room = ({ id, src, maximumImage }) => {
         <Box textAlign={`center`}>
           <Image
             alt={`img${id}`}
-            src={src}
+            src={iconSrc}
             width={`120px`}
             height={`150px`}
             // layout={`fill`}
