@@ -30,7 +30,6 @@ export const PreviewImages = () => {
                 css={style.img}
               />
             </AspectRatio>
-            {/* <Box>{img.name}</Box> */}
             <CloseButton
               position={`absolute`}
               right={`4%`}

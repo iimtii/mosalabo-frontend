@@ -5,6 +5,13 @@ import {
   Flex,
   Progress,
   useDisclosure,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+  ModalFocusScope,
+  ModalContextProvider,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -30,7 +37,22 @@ const Room = () => {
     fetchRoom();
   }, [id]);
 
-  const Loading = () => (isLoading ? <Box>Loading...</Box> : null);
+  const Loading = () =>
+    isLoading ? (
+      <Modal isOpen={1} isCentered={true} size={`xs`}>
+        <ModalOverlay />
+        <ModalContent>
+          <AspectRatio ratio={1 / 1} zIndex={`1000`} top={`20%`} opacity={`1`}>
+            <Image
+              layout={`fill`}
+              objectFit={`cover`}
+              src="/gif/loading.gif"
+              alt="loading_gif"
+            />
+          </AspectRatio>
+        </ModalContent>
+      </Modal>
+    ) : null;
 
   return (
     <Layout>
