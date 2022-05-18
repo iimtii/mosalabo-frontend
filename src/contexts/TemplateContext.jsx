@@ -8,7 +8,6 @@ export const TemplateContextProvider = ({ children }) => {
 
   const fetchTemplates = async () => {
     axios.get("/template/rooms").then((res) => {
-      console.log(res);
       setTemplates(res.data.templates);
     });
   };

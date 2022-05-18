@@ -32,9 +32,11 @@ const Room = () => {
     useContext(ProgressBarContext);
   const router = useRouter();
   const { id } = router.query;
+  const remainNumner = currentRoom.maximumImage - currentRoom.numberOfImage;
 
   useEffect(() => {
-    fetchRoom();
+    if (!id) return;
+    fetchRoom(id);
   }, [id]);
 
   const Loading = () =>
@@ -59,7 +61,7 @@ const Room = () => {
       {/* Todo: over layでloading gifを流す */}
       <Loading />
       <Box>
-        {!!currentRoom ? (
+        {!!currentRoom && !!currentRoom.mosaicImagePath ? (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
             <Image
               alt="mosaic"
@@ -68,22 +70,39 @@ const Room = () => {
               objectFit={`cover`}
             />
           </AspectRatio>
+        ) : !!currentRoom && !!currentRoom.themeImagePath ? (
+          <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
+            <Image
+              alt="mosaic"
+              src={currentRoom?.themeImagePath}
+              layout={`fill`}
+              objectFit={`cover`}
+              style={{ opacity: 0.4 }}
+            />
+          </AspectRatio>
         ) : null}
       </Box>
-      <Flex paddingY={`44px`} justifyContent={`center`}>
+      <Flex
+        paddingY={`44px`}
+        justifyContent={`center`}
+        flexDirection={`column`}
+      >
         {/* Todo: animation from prev state to next state */}
         {/* ref: https://github.com/chakra-ui/chakra-ui/issues/68 */}
-        <Progress
-          as={motion.div}
-          height={`40px`}
-          width={`288px`}
-          value={progressValue}
-          isAnimated={true}
-          hasStripe={hasStripe}
-          isIndeterminate={isIndeterminate}
-          transition={`ease`}
-          transitionDuration={`500ms`}
-        />
+        <Box margin={`auto`}>
+          <Progress
+            as={motion.div}
+            height={`40px`}
+            width={`288px`}
+            value={progressValue}
+            isAnimated={true}
+            hasStripe={hasStripe}
+            isIndeterminate={isIndeterminate}
+            transition={`ease`}
+            transitionDuration={`500ms`}
+          />
+        </Box>
+        <Box m={`auto`}>アート完成まで：{remainNumner}枚</Box>
       </Flex>
       <Flex justifyContent={`center`} gap={10}>
         <Box>
