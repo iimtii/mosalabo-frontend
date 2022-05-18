@@ -33,7 +33,7 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
         themeImagePath: src,
         maximumImage: maximumImage,
       });
-      return res.data.id;
+      return res.data.uuid;
     } catch (e) {
       console.error(e);
     }
