@@ -26,7 +26,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
     const roomId = router.asPath.split("/").pop();
     setLoading(true);
     await axios
-      .post("/api/images", {
+      .post("/images", {
         roomId,
         images: selectedImages,
       })

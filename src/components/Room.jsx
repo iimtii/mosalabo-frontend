@@ -29,7 +29,7 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
 
   const createRoom = async () => {
     try {
-      const res = await axios.post("/api/rooms", {
+      const res = await axios.post("/rooms", {
         themeImagePath: src,
         maximumImage: maximumImage,
       });

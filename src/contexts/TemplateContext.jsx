@@ -7,8 +7,10 @@ export const TemplateContextProvider = ({ children }) => {
   const [templates, setTemplates] = useState([]);
 
   const fetchTemplates = async () => {
-    const res = await axios.get("/api/template/rooms");
-    setTemplates(res.data.templates);
+    axios.get("/template/rooms").then((res) => {
+      console.log(res);
+      setTemplates(res.data.templates);
+    });
   };
 
   return (

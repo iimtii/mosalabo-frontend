@@ -12,7 +12,7 @@ export const RoomContextProvider = ({ children }) => {
   const [isLoading, setLoading] = useState(false);
 
   const fetchRoom = async (uuid) => {
-    const res = await axios.get(`/api/rooms/${uuid}`);
+    const res = await axios.get(`/rooms/${uuid}`);
     setCurrentRoom({ ...res.data });
     updateProgressBar(res.data);
   };
