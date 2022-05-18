@@ -22,7 +22,7 @@ export const FilesUpload = () => {
       reader.onabort = reject;
       reader.onload = (e) => {
         resolve({
-          name: f.name,
+          filename: f.name,
           data: e.target.result,
         });
       };

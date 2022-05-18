@@ -65,7 +65,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
               Upload
             </Button>
 
-            <Button color={colors.black} width={`100%`} onClick={onClose}>
+            <Button color={colors.black} width={`100%`} onClick={onCustomClose}>
               Cancel
             </Button>
           </Box>
