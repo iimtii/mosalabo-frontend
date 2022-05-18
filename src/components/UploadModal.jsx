@@ -62,6 +62,18 @@ export const UploadModal = ({ isOpen, onClose }) => {
               onClick={handleUpload}
               width={`full`}
               marginBottom={`8px`}
+
+              //{todo} disabled時のhoverアクションを消す
+
+              // opacity = {`0`}
+              // _hover= {{
+              //    opacity : 1
+              // }}
+              // _disabled = {{
+              //   "&:hover": {
+              //     bgColor: 'secondary.600',
+              //   }
+              // }}
             >
               Upload
             </Button>
