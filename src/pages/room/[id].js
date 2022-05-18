@@ -25,6 +25,7 @@ const Room = () => {
     useContext(ProgressBarContext);
   const router = useRouter();
   const { id } = router.query;
+  const remainNumner = currentRoom.maximumImage - currentRoom.numberOfImage;
 
   useEffect(() => {
     if (!id) return;
@@ -59,20 +60,27 @@ const Room = () => {
           </AspectRatio>
         ) : null}
       </Box>
-      <Flex paddingY={`44px`} justifyContent={`center`}>
+      <Flex
+        paddingY={`44px`}
+        justifyContent={`center`}
+        flexDirection={`column`}
+      >
         {/* Todo: animation from prev state to next state */}
         {/* ref: https://github.com/chakra-ui/chakra-ui/issues/68 */}
-        <Progress
-          as={motion.div}
-          height={`40px`}
-          width={`288px`}
-          value={progressValue}
-          isAnimated={true}
-          hasStripe={hasStripe}
-          isIndeterminate={isIndeterminate}
-          transition={`ease`}
-          transitionDuration={`500ms`}
-        />
+        <Box margin={`auto`}>
+          <Progress
+            as={motion.div}
+            height={`40px`}
+            width={`288px`}
+            value={progressValue}
+            isAnimated={true}
+            hasStripe={hasStripe}
+            isIndeterminate={isIndeterminate}
+            transition={`ease`}
+            transitionDuration={`500ms`}
+          />
+        </Box>
+        <Box m={`auto`}>アート完成まで：{remainNumner}枚</Box>
       </Flex>
       <Flex justifyContent={`center`} gap={10}>
         <Box>
