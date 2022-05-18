@@ -6,12 +6,8 @@ import {
   Progress,
   useDisclosure,
   Modal,
-  ModalBody,
   ModalContent,
-  ModalFooter,
   ModalOverlay,
-  ModalFocusScope,
-  ModalContextProvider,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -32,7 +28,7 @@ const Room = () => {
     useContext(ProgressBarContext);
   const router = useRouter();
   const { id } = router.query;
-  const remainNumner = currentRoom.maximumImage - currentRoom.numberOfImage;
+  const remainNumner = currentRoom?.maximumImage - currentRoom?.numberOfImage;
 
   useEffect(() => {
     if (!id) return;
@@ -58,7 +54,6 @@ const Room = () => {
 
   return (
     <Layout>
-      {/* Todo: over layでloading gifを流す */}
       <Loading />
       <Box>
         {!!currentRoom && !!currentRoom.mosaicImagePath ? (
@@ -94,12 +89,11 @@ const Room = () => {
             as={motion.div}
             height={`40px`}
             width={`288px`}
+            borderRadius={`10px`}
             value={progressValue}
             isAnimated={true}
             hasStripe={hasStripe}
             isIndeterminate={isIndeterminate}
-            transition={`ease`}
-            transitionDuration={`500ms`}
           />
         </Box>
         <Box m={`auto`}>アート完成まで：{remainNumner}枚</Box>

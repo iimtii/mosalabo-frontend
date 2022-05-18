@@ -21,6 +21,7 @@ export const FilesUpload = () => {
       const reader = new FileReader();
       reader.onabort = reject;
       reader.onload = (e) => {
+        // Todo: 画像サイズのresize
         resolve({
           filename: f.name,
           data: e.target.result,
@@ -41,6 +42,9 @@ export const FilesUpload = () => {
         setError(true);
         return;
       }
+      // Todo: file sizeのバリデーション
+      // 今の状態と新しいファイル含めて最大値チェック
+
       convertToBase64(files[0])
         .then((res) => {
           setSelectedImages(selectedImages.concat(res));
