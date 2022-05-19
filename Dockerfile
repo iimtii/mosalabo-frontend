@@ -10,7 +10,7 @@ ENV http_proxy=
 ENV https_proxy=
 CMD ["yarn", "start"]
 
-FROM FROM registry-jpe2.r-local.net/caas-trial/nginxinc/nginx-unprivileged:1.18
+FROM registry-jpe2.r-local.net/caas-trial/nginxinc/nginx-unprivileged:1.18
 EXPOSE 3000
 RUN sed -i 's,listen       80;,listen       3000;,' /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/.next/server/pages /usr/share/nginx/html/
