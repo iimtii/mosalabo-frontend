@@ -7,7 +7,6 @@ metadata:
   name: cc-tech-newgrad-f-frontend-dev
 spec:
   replicas: 1
-  revisionHistoryLimit: 1
   selector:
     matchLabels:
       name: cc-tech-newgrad-f-frontend-dev
@@ -19,41 +18,31 @@ spec:
     metadata:
       labels:
         name: cc-tech-newgrad-f-frontend-dev
-        version: v1
-        networkpolicy.ecbs-bos.rakuten/network-policy: allow
-      annotations:
-        sla: high
-        tier: application
-        role: frontend-ui
     spec:
-      securityContext:
-        runAsUser: 999
-      volumes:
-        - name: log-storage
-          emptyDir: {}
-        - name: podinfo
-          downwardAPI:
-            items:
-              - path: labels
-                fieldRef:
-                  fieldPath: metadata.labels
-              - path: annotations
-                fieldRef:
-                  fieldPath: metadata.annotations
-      imagePullSecrets:
-        - name: harbor-bot
       containers:
         - name: cc-tech-newgrad-f-frontend-dev
-          env:
-            - name: TZ
-              value: "Asia/Tokyo"
           image: teamf-frontend-image
-          ports:
-            - containerPort: 3000
           resources:
             limits:
-              cpu: 0.5
-              memory: 1Gi
+              cpu: 100m
+              memory: 100Mi
             requests:
-              cpu: 0.5
-              memory: 1Gi
+              cpu: 50m
+              memory: 50Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 30
+          securityContext:
+            runAsUser: 101
+            runAsGroup: 101
+      serviceAccountName: tenant-pod-default
+      automountServiceAccountToken: true # Istio sidecar needs to communicate with k8s API
