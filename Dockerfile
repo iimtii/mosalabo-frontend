@@ -1,4 +1,4 @@
-FROM artifactory.rakuten-it.com/dockerhub/node:14-slim AS builder
+FROM artifactory.rakuten-it.com/dockerhub/node:16-slim AS builder
 COPY ./package.json /app/
 WORKDIR /app
 ENV http_proxy=http://pkg.proxy.prod.jp.local:10080
