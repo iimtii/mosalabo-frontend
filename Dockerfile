@@ -8,6 +8,7 @@ RUN yarn install
 RUN yarn build
 ENV http_proxy=
 ENV https_proxy=
+CMD ["yarn", "start"]
 
 FROM artifactory.rakuten-it.com/dockerhub/nginxinc/nginx-unprivileged:1.20-alpine
 EXPOSE 3000
