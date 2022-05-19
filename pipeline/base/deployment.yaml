@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cc-tech-newgrad-f-frontend-dev
+  namespace: cc-tech-newgrad-f
+  name: cc-tech-newgrad-f-frontend-dev
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      name: cc-tech-newgrad-f-frontend-dev
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 50%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: cc-tech-newgrad-f-frontend-dev
+        version: v1
+        networkpolicy.ecbs-bos.rakuten/network-policy: allow
+      annotations:
+        sla: high
+        tier: application
+        role: frontend-ui
+    spec:
+      securityContext:
+        runAsUser: 999
+      volumes:
+        - name: log-storage
+          emptyDir: {}
+        - name: podinfo
+          downwardAPI:
+            items:
+              - path: labels
+                fieldRef:
+                  fieldPath: metadata.labels
+              - path: annotations
+                fieldRef:
+                  fieldPath: metadata.annotations
+      imagePullSecrets:
+        - name: harbor-bot
+      containers:
+        - name: cc-tech-newgrad-f-frontend-dev
+          env:
+            - name: TZ
+              value: "Asia/Tokyo"
+          image: teamf-frontend-image
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: 0.5
+              memory: 1Gi
+            requests:
+              cpu: 0.5
+              memory: 1Gi
