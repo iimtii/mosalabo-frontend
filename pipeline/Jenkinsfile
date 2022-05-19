@@ -103,10 +103,10 @@ pipeline {
           sh label: 'build resource.yaml with kustomize', script: """
             cd pipeline
             ${KUSTOMIZE_HOME}/kustomize edit set image ${IMAGE_NAME}=${env.DOCKER_IMAGE}
-            ${KUSTOMIZE_HOME}/kustomize build --output ${MANIFEST_FILE}
+            ${KUSTOMIZE_HOME}/kustomize build --output ./${MANIFEST_FILE}
           """
-          // moTemplate("${MANIFEST_FILE}")
-          // sh "cat ${MANIFEST_FILE}"
+          moTemplate("${MANIFEST_FILE}")
+          sh "cat ${MANIFEST_FILE}"
 
           // cpd.getNameFromManifest only support single resource
           // If you want to check rollout status of multiple deployments, please set DEPLOY_NAME statically and call kubectl rollout status twice.
