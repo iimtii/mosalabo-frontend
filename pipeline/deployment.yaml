@@ -20,8 +20,6 @@ spec:
       labels:
         name: teamf-frontend-dev
     spec:
-      imagePullSecrets:
-        - name: harbor-bot
       containers:
         - name: teamf-frontend-dev
           env:
