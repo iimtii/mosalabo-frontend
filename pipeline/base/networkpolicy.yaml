@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: network.jpe2b.dcnw.rakuten
-  namespace: ecbs-gfp-frontend
+  name: network.jpe1a.dcnw.rakuten
+  namespace: cc-tech-newgrad-f
 spec:
   podSelector:
     matchLabels:

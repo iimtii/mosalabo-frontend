@@ -2,15 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: gfp-frontend-{{APP_ENV}}
-  namespace: ecbs-gfp-frontend
-  name: gfp-frontend-{{APP_ENV}}
+    app: cc-tech-newgrad-f-frontend-dev
+  namespace: cc-tech-newgrad-f
+  name: cc-tech-newgrad-f-frontend-dev
 spec:
   replicas: 1
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      name: gfp-frontend-{{APP_ENV}}
+      name: cc-tech-newgrad-f-frontend-dev
   strategy:
     rollingUpdate:
       maxUnavailable: 50%
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        name: gfp-frontend-{{APP_ENV}}
+        name: cc-tech-newgrad-f-frontend-dev
         version: v1
         networkpolicy.ecbs-bos.rakuten/network-policy: allow
       annotations:
@@ -43,11 +43,11 @@ spec:
       imagePullSecrets:
         - name: harbor-bot
       containers:
-        - name: gfp-frontend-{{APP_ENV}}
+        - name: cc-tech-newgrad-f-frontend-dev
           env:
             - name: TZ
               value: "Asia/Tokyo"
-          image: gfp-frontend-image
+          image: teamf-frontend-image
           ports:
             - containerPort: 3000
           resources:
