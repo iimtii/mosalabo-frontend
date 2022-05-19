@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: cc-tech-newgrad-f-frontend-dev
-  namespace: cc-tech-newgrad-f-frontend-dev
-  name: cc-tech-newgrad-f-frontend-dev
+    app: teamf-frontend-dev
+  namespace: teamf-frontend-dev
+  name: teamf-frontend-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: cc-tech-newgrad-f-frontend-dev
+      name: teamf-frontend-dev
   strategy:
     rollingUpdate:
       maxUnavailable: 50%
@@ -17,10 +17,10 @@ spec:
   template:
     metadata:
       labels:
-        name: cc-tech-newgrad-f-frontend-dev
+        name: teamf-frontend-dev
     spec:
       containers:
-        - name: cc-tech-newgrad-f-frontend-dev
+        - name: teamf-frontend-dev
           image: teamf-frontend-image
           resources:
             limits:
