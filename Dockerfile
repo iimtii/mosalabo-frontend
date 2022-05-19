@@ -5,7 +5,8 @@ ENV http_proxy=http://pkg.proxy.prod.jp.local:10080
 ENV https_proxy=http://pkg.proxy.prod.jp.local:10080
 # RUN npm install -g yarn
 COPY ./ /app/
-RUN yarn install && yarn build
+RUN yarn install
+RUN yarn build
 ENV http_proxy=
 ENV https_proxy=
 
