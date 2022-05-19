@@ -13,4 +13,4 @@ ENV https_proxy=
 FROM artifactory.rakuten-it.com/dockerhub/nginxinc/nginx-unprivileged:1.20-alpine
 EXPOSE 3000
 RUN sed -i 's,listen       80;,listen       3000;,' /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/build/ /usr/share/nginx/html/
+COPY --from=builder /app/.next/server/pages /usr/share/nginx/html/
