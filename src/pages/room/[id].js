@@ -15,7 +15,7 @@ import { useEffect, useContext } from "react";
 import { Footer } from "../../components/common/Footer";
 import { Layout } from "../../components/common/Layout";
 import { ShareButton } from "../../components/ShareButton";
-import { UploadModal } from "../../components/uploadModal";
+import { UploadModal } from "../../components/UploadModal";
 import { ProgressBarContext } from "../../contexts/ProgressBarContext";
 import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
