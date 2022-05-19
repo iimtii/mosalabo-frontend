@@ -3,7 +3,6 @@ COPY ./package.json /app/
 WORKDIR /app
 ENV http_proxy=http://pkg.proxy.prod.jp.local:10080
 ENV https_proxy=http://pkg.proxy.prod.jp.local:10080
-# RUN npm install -g yarn
 COPY ./ /app/
 RUN yarn install
 RUN yarn build
