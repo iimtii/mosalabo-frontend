@@ -103,7 +103,7 @@ pipeline {
           sh label: 'build resource.yaml with kustomize', script: """
             cd pipeline/base
             ${KUSTOMIZE_HOME}/kustomize edit set image ${IMAGE_NAME}=${env.DOCKER_IMAGE}
-            ${KUSTOMIZE_HOME}/kustomize build --output ../../../${MANIFEST_FILE}
+            ${KUSTOMIZE_HOME}/kustomize build --output ${MANIFEST_FILE}
           """
           moTemplate("${MANIFEST_FILE}")
           sh "cat ${MANIFEST_FILE}"
