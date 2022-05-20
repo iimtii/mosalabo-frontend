@@ -42,4 +42,9 @@ spec:
               httpHeaders:
             initialDelaySeconds: 10
             periodSeconds: 3
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        seccompProfile:
+          type: RuntimeDefault
       automountServiceAccountToken: true # Istio sidecar needs to communicate with k8s API
