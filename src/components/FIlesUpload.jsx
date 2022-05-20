@@ -122,7 +122,7 @@ export const FilesUpload = () => {
 
   return (
     <>
-      <Center paddingY={`30px`}>
+      <Center paddingY={`30px`} fontSize={`xl`}>
         写真をアップロード(最大{MAX_NUMBER_OF_IMAGES}枚まで)
       </Center>
       <Box
