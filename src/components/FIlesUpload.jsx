@@ -87,6 +87,9 @@ export const FilesUpload = () => {
       const existingFiles = selectedImages?.map((f) => f.name);
       files = files.filter((f) => !existingFiles.includes(f.name));
 
+      const allowExtensions = ".(jpeg|jpg|png)$"; // 許可する拡張子
+      files = files.filter((f) => !!f.name.match(allowExtensions));
+
       // Todo: validationは独立させる
       if (selectedImages.concat(files).length > 5) {
         setError(true);

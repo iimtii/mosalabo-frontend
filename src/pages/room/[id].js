@@ -96,7 +96,11 @@ const Room = () => {
             isIndeterminate={isIndeterminate}
           />
         </Box>
-        <Box m={`auto`}>アート完成まで：{remainNumner}枚</Box>
+        {remainNumner <= 0 ? (
+          <Box m={`auto`}>アート完成！！</Box>
+        ) : (
+          <Box m={`auto`}>アート完成まで：{remainNumner}枚</Box>
+        )}
       </Flex>
       <Flex justifyContent={`center`} gap={10}>
         <Box>
