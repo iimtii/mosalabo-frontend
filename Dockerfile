@@ -1,13 +1,9 @@
 FROM artifactory.rakuten-it.com/dockerhub/node:16-slim AS builder
 COPY ./package.json /app/
 WORKDIR /app
-ENV http_proxy=http://pkg.proxy.prod.jp.local:10080
-ENV https_proxy=http://pkg.proxy.prod.jp.local:10080
 COPY ./ /app/
 RUN yarn install
 RUN yarn build
-ENV http_proxy=
-ENV https_proxy=
 CMD ["yarn", "start"]
 
 FROM artifactory.rakuten-it.com/dockerhub/nginxinc/nginx-unprivileged:1.20-alpine
