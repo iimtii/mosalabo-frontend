@@ -1,7 +1,20 @@
 import Image from "next/image";
-import { Box, Center, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Flex,
+  useDisclosure,
+  Modal,
+  ModalHeader,
+  ModalContent,
+  ModalBody,
+  ModalOverlay,
+  ModalFooter,
+  Button,
+  Heading,
+} from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import { typography } from "../../styles/common";
+import { typography, colors } from "../../styles/common";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -13,12 +26,13 @@ const style = {
 
 export const Header = () => {
   const router = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Center as="header" height={"130px"} paddingTop={`40px`}>
-      <Link href={`/`}>
-        <a>
-          <Flex gap={`0px`} justifyContent={`left`}>
+    <>
+      <Center as="header" height={"130px"} paddingTop={`40px`}>
+        <a onClick={onOpen}>
+          <Flex gap={`0px`}>
             {router.pathname !== "/" ? (
               <Flex>
                 <Image
@@ -41,7 +55,36 @@ export const Header = () => {
             </Box>
           </Flex>
         </a>
-      </Link>
-    </Center>
+      </Center>
+
+      <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={`true`}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>
+            <Heading size={`lg`}>本当に移動しますか？</Heading>
+            <Heading size={`sm`} opacity={`0.5`}>
+              リンクをコピーせずにホームへ戻るとこのroomへは戻れなくなります
+            </Heading>
+          </ModalHeader>
+          <ModalBody></ModalBody>
+
+          <ModalFooter>
+            <Flex gap={`5rem`}>
+              <Button
+                bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
+                mr={3}
+                onClick={onClose}
+                color={colors.white}
+              >
+                Cancel
+              </Button>
+              <Link href={`/`}>
+                <Button variant="outline">move</Button>
+              </Link>
+            </Flex>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };

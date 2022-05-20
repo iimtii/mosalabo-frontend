@@ -102,7 +102,7 @@ const Room = () => {
           <Box m={`auto`}>アート完成まで：{remainNumner}枚</Box>
         )}
       </Flex>
-      <Flex justifyContent={`center`} gap={10}>
+      <Flex justifyContent={`center`} gap={7}>
         <Box>
           <Button
             paddingY={`30px`}
