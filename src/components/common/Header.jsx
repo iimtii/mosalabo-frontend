@@ -30,10 +30,10 @@ export const Header = () => {
 
   return (
     <>
-      <Center as="header" height={"130px"} paddingTop={`40px`}>
-        <a onClick={onOpen}>
-          <Flex gap={`0px`}>
-            {router.pathname !== "/" ? (
+      {router.pathname !== "/" ? (
+        <Center as="header" height={"130px"} paddingTop={`40px`}>
+          <a onClick={onOpen}>
+            <Flex gap={`0px`}>
               <Flex>
                 <Image
                   alt="home"
@@ -44,7 +44,20 @@ export const Header = () => {
                   paddingTop={`50px`}
                 />
               </Flex>
-            ) : null}
+              <Box>
+                <Image
+                  height={`46px`}
+                  width={`266px`}
+                  src="/title/mosalabo_title.svg"
+                  alt="title"
+                />
+              </Box>
+            </Flex>
+          </a>
+        </Center>
+      ) : (
+        <Center as="header" height={"130px"} paddingTop={`40px`}>
+          <Flex gap={`0px`}>
             <Box>
               <Image
                 height={`46px`}
@@ -54,8 +67,8 @@ export const Header = () => {
               />
             </Box>
           </Flex>
-        </a>
-      </Center>
+        </Center>
+      )}
 
       <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={`true`}>
         <ModalOverlay />
