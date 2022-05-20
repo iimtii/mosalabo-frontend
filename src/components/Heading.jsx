@@ -23,11 +23,19 @@ export const Heading = () => {
         borderStyle={`solid`}
         borderWidth={`1px`}
         bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
+        height={`95px`}
+        width={`303px`}
       >
-        <Box css={style.font} paddingX={`36px`} paddingY={`8px`}>
-          モザイクにするテーマ
+        <Box
+          css={style.font}
+          display={`flex`}
+          alignContent={`center`}
+          justifyContent={`center`}
+          paddingTop={`15px`}
+        >
+          モザイクにするテーマを
           <br />
-          を選んでね！
+          選んでね！
         </Box>
       </Box>
     </Center>

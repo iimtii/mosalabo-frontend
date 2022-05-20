@@ -18,9 +18,10 @@ const Home = () => {
       <Heading />
       <Grid
         templateColumns={`repeat(2, 1fr)`}
-        width={`80%`}
+        width={`68%`}
         margin={`auto`}
         gap={`40px`}
+        paddingBottom={`91px`}
       >
         {templates.map((template) => (
           <Room

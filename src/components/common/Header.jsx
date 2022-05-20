@@ -15,45 +15,33 @@ export const Header = () => {
   const router = useRouter();
 
   return (
-    <Center as="header" height={"100px"}>
-      <Flex gap={`100px`}>
-        <Box>
-          <Link href={"/"}>
-            <a>
-              <Flex gap={`20px`}>
-                <Flex alignItems={`center`} justifyContent={`center`}>
-                  <Image
-                    alt="logo"
-                    src={`/icons/Logo.svg`}
-                    width={`40px`}
-                    height={`40px`}
-                  />
-                </Flex>
-                <Box css={style.font}>Mosalabo</Box>
-              </Flex>
-            </a>
-          </Link>
-        </Box>
-        {router.pathname !== "/" ? (
-          <Flex
-            alignItems={`center`}
-            justifyContent={`center`}
-            paddingTop={`3px`}
-          >
-            <Link href={`/`}>
-              <a>
+    <Center as="header" height={"130px"} paddingTop={`40px`}>
+      <Link href={`/`}>
+        <a>
+          <Flex gap={`0px`} justifyContent={`left`}>
+            {router.pathname !== "/" ? (
+              <Flex>
                 <Image
                   alt="home"
                   src={`/icons/home.svg`}
                   width={`40px`}
                   height={`40px`}
                   css={style.home}
+                  paddingTop={`50px`}
                 />
-              </a>
-            </Link>
+              </Flex>
+            ) : null}
+            <Box>
+              <Image
+                height={`46px`}
+                width={`266px`}
+                src="/title/mosalabo_title.svg"
+                alt="title"
+              />
+            </Box>
           </Flex>
-        ) : null}
-      </Flex>
+        </a>
+      </Link>
     </Center>
   );
 };

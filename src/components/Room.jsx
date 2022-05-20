@@ -49,23 +49,25 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
   };
 
   return (
-    <Center>
+    <Center paddingBottom={`15px`}>
       <Flex
         css={style.box}
         flexDirection={`column`}
-        gap={`8px`}
+        gap={`22px`}
         border={`1px`}
         borderColor={`#E2E8F0`}
-        paddingTop={`40px`}
+        paddingTop={`30px`}
         paddingBottom={`16px`}
         borderRadius={`12px`}
+        height={`180px`}
+        width={`113px`}
       >
         <Box textAlign={`center`}>
           <Image
             alt={`img${id}`}
             src={iconSrc}
-            width={`120px`}
-            height={`150px`}
+            width={`60px`}
+            height={`60px`}
             // layout={`fill`}
             objectFit={`contain`}
           />
@@ -75,6 +77,8 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
             onClick={onOpen}
             bgColor={colors.primary}
             color={colors.white}
+            borderRadius={`24px`}
+            width={`72px`}
           >
             選ぶ
           </Button>

@@ -56,7 +56,6 @@ const Room = () => {
 
   return (
     <Layout>
-      {/* Todo: over layでloading gifを流す */}
       <Loading />
       <Box>
         {!!currentRoom ? (
