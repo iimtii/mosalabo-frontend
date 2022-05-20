@@ -32,6 +32,7 @@ export const Heading = () => {
           alignContent={`center`}
           justifyContent={`center`}
           paddingTop={`15px`}
+          fontWeight={`semibold`}
         >
           モザイクにするテーマを
           <br />

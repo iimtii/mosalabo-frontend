@@ -35,6 +35,9 @@ export const ShareButton = () => {
         borderRadius={`16px`}
         color={colors.white}
         bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
+        height={`93px`}
+        width={`140px`}
+        fontSize={`19px`}
       >
         このラボを
         <br />
