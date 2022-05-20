@@ -44,14 +44,9 @@ export const ShareButton = () => {
         シェア
       </Button>
 
-      <Modal
-        size={`xs`}
-        isOpen={isOpen}
-        isCentered={true}
-        borderRadius={`16px`}
-      >
+      <Modal size={`xs`} isOpen={isOpen} borderRadius={`16px`}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent top={`26rem`}>
           <ModalBody>
             <Box m={`3px`}>
               <Button
