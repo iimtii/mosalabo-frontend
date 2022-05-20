@@ -1,7 +1,10 @@
 FROM artifactory.rakuten-it.com/dockerhub/node:16-slim
-COPY ./package.json /app/
-WORKDIR /app
-COPY ./ /app/
+RUN useradd -ms /bin/bash newuser
+USER newuser
+WORKDIR /home/newuser
+COPY ./package.json ~/
+COPY ./ ~/
+
 RUN yarn install
 RUN yarn build
 CMD ["yarn", "start"]
