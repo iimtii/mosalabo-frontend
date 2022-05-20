@@ -102,7 +102,7 @@ const Room = () => {
           <Box m={`auto`}>アート完成まで：{remainNumner}枚</Box>
         )}
       </Flex>
-      <Flex justifyContent={`center`} gap={10}>
+      <Flex justifyContent={`center`} gap={7}>
         <Box>
           <Button
             paddingY={`30px`}
@@ -110,6 +110,9 @@ const Room = () => {
             color={colors.white}
             bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
             onClick={onOpen}
+            height={`93px`}
+            width={`140px`}
+            fontSize={`19px`}
           >
             写真を
             <br />

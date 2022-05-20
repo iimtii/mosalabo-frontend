@@ -35,17 +35,20 @@ export const ShareButton = () => {
         borderRadius={`16px`}
         color={colors.white}
         bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
+        height={`93px`}
+        width={`140px`}
+        fontSize={`19px`}
       >
         このラボを
         <br />
         シェア
       </Button>
 
-      <Modal size={`xl`} isOpen={isOpen} isCentered={true}>
+      <Modal size={`xs`} isOpen={isOpen} borderRadius={`16px`}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent top={`26rem`}>
           <ModalBody>
-            <Box m={`auto`}>
+            <Box m={`3px`}>
               <Button
                 marginTop={`30px`}
                 color={colors.white}

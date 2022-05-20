@@ -70,7 +70,12 @@ export const UploadModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onCustomClose} size={`xl`}>
+    <Modal
+      isOpen={isOpen}
+      onClose={onCustomClose}
+      size={`sm`}
+      isCentered={true}
+    >
       <ModalOverlay />
       <ModalContent>
         <ModalBody>
@@ -85,7 +90,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
               onClick={handleUpload}
               width={`full`}
               marginBottom={`8px`}
-
+              fontSize={`xl`}
               //{todo} disabled時のhoverアクションを消す
             >
               Upload
