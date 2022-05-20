@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: network
+  namespace: cc-tech-newgrad-f-frontend-dev
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+    - Ingress
+  egress:
+    - {}
+  ingress:
+    - {}
