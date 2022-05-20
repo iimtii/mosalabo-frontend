@@ -21,8 +21,9 @@ export const FilesUpload = () => {
       const reader = new FileReader();
       reader.onabort = reject;
       reader.onload = (e) => {
+        // Todo: 画像サイズのresize
         resolve({
-          name: f.name,
+          filename: f.name,
           data: e.target.result,
         });
       };
@@ -41,6 +42,9 @@ export const FilesUpload = () => {
         setError(true);
         return;
       }
+      // Todo: file sizeのバリデーション
+      // 今の状態と新しいファイル含めて最大値チェック
+
       convertToBase64(files[0])
         .then((res) => {
           setSelectedImages(selectedImages.concat(res));
@@ -82,6 +86,9 @@ export const FilesUpload = () => {
     if (files && files.length > 0) {
       const existingFiles = selectedImages?.map((f) => f.name);
       files = files.filter((f) => !existingFiles.includes(f.name));
+
+      const allowExtensions = ".(jpeg|jpg|png)$"; // 許可する拡張子
+      files = files.filter((f) => !!f.name.match(allowExtensions));
 
       // Todo: validationは独立させる
       if (selectedImages.concat(files).length > 5) {
@@ -163,6 +170,7 @@ export const FilesUpload = () => {
               onChange={onChangeImages}
               name="images"
               css={style.input}
+              accept="image/png, image/jpeg, image/jpg"
             />
           </label>
         </Box>

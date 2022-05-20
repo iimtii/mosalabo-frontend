@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: teamf-frontend-dev
+  namespace: cc-tech-newgrad-f-frontend-dev
+  name: teamf-frontend-dev
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      name: teamf-frontend-dev
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 50%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: teamf-frontend-dev
+    spec:
+      containers:
+        - name: teamf-frontend-dev
+          env:
+            - name: TZ
+              value: "Asia/Tokyo"
+          image: teamf-frontend-image
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: 0.5
+              memory: 1Gi
+            requests:
+              cpu: 0.5
+              memory: 1Gi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+              httpHeaders:
+            initialDelaySeconds: 10
+            periodSeconds: 3
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        seccompProfile:
+          type: RuntimeDefault
+      automountServiceAccountToken: true # Istio sidecar needs to communicate with k8s API

@@ -29,11 +29,11 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
 
   const createRoom = async () => {
     try {
-      const res = await axios.post("/api/rooms", {
+      const res = await axios.post("/rooms", {
         themeImagePath: src,
         maximumImage: maximumImage,
       });
-      return res.data.id;
+      return res.data.uuid;
     } catch (e) {
       console.error(e);
     }
@@ -41,6 +41,7 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
 
   const handleSubmit = () => {
     createRoom().then((res) => {
+      console.log(res);
       router.push({
         pathname: "/room/[id]",
         query: { id: res },
