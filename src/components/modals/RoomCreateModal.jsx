@@ -14,7 +14,7 @@ import Image from "next/image";
 
 export const RoomCreateModal = ({ isOpen, onClose, src, handleSubmit }) => {
   return (
-    <Modal size={`xs`} isOpen={isOpen} onClose={onClose}>
+    <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={`true`}>
       <ModalOverlay />
       <ModalContent>
         <ModalCloseButton />
@@ -27,7 +27,7 @@ export const RoomCreateModal = ({ isOpen, onClose, src, handleSubmit }) => {
               // layout={`fill`}
               objectFit={`contain`}
               width={`270px`}
-              height={`350px`}
+              height={`300px`}
             />
           </Center>
         </ModalBody>
