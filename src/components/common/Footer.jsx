@@ -1,6 +1,7 @@
 import { Button, Center, Flex } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { INSTAGRAM_URL } from "../../constants/common";
 import { RoomContext } from "../../contexts/RoomContext";
@@ -8,6 +9,15 @@ import { colors } from "../../styles/common";
 
 export const Footer = () => {
   const { currentRoom } = useContext(RoomContext);
+  const router = useRouter();
+
+  const handleGallary = () => {
+    const { id } = router.query;
+    router.push({
+      pathname: "/gallary/[id]",
+      query: { id: id },
+    });
+  };
 
   const onSaveMosaic = async () => {
     await fetch(currentRoom.mosaicImagePath)
@@ -33,6 +43,20 @@ export const Footer = () => {
       bottom={`0`}
     >
       <Flex gap={`68px`}>
+        <Button
+          bgColor={colors.white}
+          variant="link"
+          _focus={{}}
+          onClick={handleGallary}
+        >
+          <Image
+            alt="gallary"
+            src={`/icons/gallary.svg`}
+            width={`40px`}
+            height={`40px`}
+          />
+        </Button>
+
         <Button
           bgColor={colors.white}
           variant="link"
