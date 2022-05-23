@@ -16,10 +16,10 @@ export const TransferAlertModal = ({ isOpen, onClose }) => {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
-          <Heading size={`lg`} marginLeft={`10px`}>
+          <Heading size={`md`} marginLeft={`10px`}>
             本当に移動しますか？
           </Heading>
-          <Heading size={`sm`} opacity={`0.5`} margin={`10px`}>
+          <Heading size={`xs`} opacity={`0.5`} margin={`10px`}>
             リンクをコピーせずにホームへ戻るとこのroomへは戻れなくなります
           </Heading>
 
