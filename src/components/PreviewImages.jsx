@@ -17,8 +17,7 @@ export const PreviewImages = () => {
   };
   return (
     <>
-      {/* Todo: indexではなく、objectのidをkeyにする */}
-      <Flex alignItems="center" gap="2">
+      <Flex alignItems="center" gap="2" overflowX={`scroll`}>
         {selectedImages?.map((img, index) => (
           <Box key={index} position={`relative`} paddingTop={8}>
             <AspectRatio width={`70px`} ratio={1 / 1}>

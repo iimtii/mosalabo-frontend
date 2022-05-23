@@ -41,7 +41,6 @@ export const Header = () => {
                   width={`40px`}
                   height={`40px`}
                   css={style.home}
-                  paddingTop={`50px`}
                 />
               </Flex>
               <Box>
