@@ -1,4 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { GallaryContextProvider } from "../contexts/GallaryContext";
 import { ImagesContextProvider } from "../contexts/ImagesContext";
 import { ProgressBarContextProvider } from "../contexts/ProgressBarContext";
 import { RoomContextProvider } from "../contexts/RoomContext";
@@ -11,7 +12,9 @@ function MyApp({ Component, pageProps }) {
         <ProgressBarContextProvider>
           <RoomContextProvider>
             <ImagesContextProvider>
-              <Component {...pageProps} />
+              <GallaryContextProvider>
+                <Component {...pageProps} />
+              </GallaryContextProvider>
             </ImagesContextProvider>
           </RoomContextProvider>
         </ProgressBarContextProvider>
