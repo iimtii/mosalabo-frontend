@@ -1,20 +1,10 @@
 import Image from "next/image";
-import {
-  Box,
-  Center,
-  Flex,
-  useDisclosure,
-  Modal,
-  ModalHeader,
-  ModalContent,
-  ModalOverlay,
-  Button,
-  Heading,
-} from "@chakra-ui/react";
+import { Box, Center, Flex, useDisclosure } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import { typography, colors } from "../../styles/common";
-import Link from "next/link";
+import { typography } from "../../styles/common";
+
 import { useRouter } from "next/router";
+import { TransferAlertModal } from "../modals/TransferAlertModal";
 
 const style = {
   font: css`
@@ -29,7 +19,7 @@ export const Header = () => {
   return (
     <>
       {router.pathname !== "/" ? (
-        <Center as="header" height={"130px"} paddingTop={`40px`}>
+        <Center as="header" height={"120px"}>
           <a onClick={onOpen}>
             <Flex gap={`0px`}>
               <Flex>
@@ -39,7 +29,6 @@ export const Header = () => {
                   width={`40px`}
                   height={`40px`}
                   css={style.home}
-                  paddingTop={`50px`}
                 />
               </Flex>
               <Box>
@@ -54,7 +43,7 @@ export const Header = () => {
           </a>
         </Center>
       ) : (
-        <Center as="header" height={"130px"} paddingTop={`40px`}>
+        <Center as="header" height={"120px"}>
           <Flex gap={`0px`}>
             <Box>
               <Image
@@ -67,39 +56,7 @@ export const Header = () => {
           </Flex>
         </Center>
       )}
-
-      <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={`true`}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>
-            <Heading size={`lg`} marginLeft={`10px`}>
-              本当に移動しますか？
-            </Heading>
-            <Heading size={`sm`} opacity={`0.5`} margin={`10px`}>
-              リンクをコピーせずにホームへ戻るとこのroomへは戻れなくなります
-            </Heading>
-
-            <Flex justifyContent="space-between" paddingTop={`10px`}>
-              <Flex>
-                <Button
-                  bgColor={`#84A6EE`}
-                  mr={3}
-                  onClick={onClose}
-                  color={colors.white}
-                  marginLeft={`15px`}
-                >
-                  Cancel
-                </Button>
-              </Flex>
-              <Flex marginRight={`15px`}>
-                <Link href={`/`}>
-                  <Button variant="outline">move</Button>
-                </Link>
-              </Flex>
-            </Flex>
-          </ModalHeader>
-        </ModalContent>
-      </Modal>
+      <TransferAlertModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 };

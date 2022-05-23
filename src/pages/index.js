@@ -2,7 +2,7 @@ import { Grid } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { Layout } from "../components/common/Layout";
-import { Heading } from "../components/Heading";
+import { Title } from "../components/Title";
 import { Room } from "../components/Room";
 import { TemplateContext } from "../contexts/TemplateContext";
 
@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <Heading />
+      <Title />
       <Grid
         templateColumns={`repeat(2, 1fr)`}
         width={`68%`}

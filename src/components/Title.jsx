@@ -2,7 +2,7 @@ import { Box, Center } from "@chakra-ui/react";
 import { colors, typography } from "../styles/common";
 import { css } from "@emotion/react";
 
-export const Heading = () => {
+export const Title = () => {
   const style = {
     font: css`
       ${typography.ibm_heading}
@@ -15,7 +15,7 @@ export const Heading = () => {
   };
 
   return (
-    <Center paddingTop={`28px`} paddingBottom={`66px`}>
+    <Center paddingTop={`8px`} paddingBottom={`66px`}>
       <Box
         css={style.box}
         borderRadius={`16px`}

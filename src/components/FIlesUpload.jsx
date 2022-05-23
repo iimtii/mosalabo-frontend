@@ -7,6 +7,11 @@ import { PreviewImages } from "./PreviewImages";
 import { isSmartPhone } from "../utils/isSmartPhone";
 import Image from "next/image";
 import { ImagesContext } from "../contexts/ImagesContext";
+import { MAX_HEIGHT, MAX_WIDTH } from "../constants/room";
+import {
+  canUploadMoreImages,
+  isOverImagesSize,
+} from "../validator/UploadImagesValidator";
 
 // ref: https://www.section.io/engineering-education/nextjs-dnd-file-upload/
 export const FilesUpload = () => {
@@ -15,16 +20,52 @@ export const FilesUpload = () => {
   const [hasError, setError] = useState(false);
   const { selectedImages, setSelectedImages } = useContext(ImagesContext);
 
-  const convertToBase64 = (f) => {
+  const loadImage = (src) => {
+    // eslint-disable-next-line no-undef
+    return new Promise((resolve, reject) => {
+      let img = document.createElement("img");
+      img.src = src;
+      img.onload = () => {
+        resolve(img);
+      };
+      img.onerror = () => {
+        reject(img);
+      };
+    });
+  };
+
+  const convertToBase64WithResize = (f) => {
     // eslint-disable-next-line no-undef
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onabort = reject;
       reader.onload = (e) => {
-        // Todo: 画像サイズのresize
-        resolve({
-          filename: f.name,
-          data: e.target.result,
+        loadImage(e.target.result).then((img) => {
+          let canvas = document.createElement("canvas");
+          let ctx = canvas.getContext("2d");
+          ctx?.drawImage(img, 0, 0);
+
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height && width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          } else if (width <= height && height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+          canvas.height = height;
+          canvas.width = width;
+          ctx = canvas.getContext("2d");
+          ctx?.drawImage(img, 0, 0, width, height);
+
+          const data = canvas.toDataURL(f.type);
+
+          resolve({
+            filename: f.name,
+            data: data,
+          });
         });
       };
       reader.readAsDataURL(f);
@@ -37,16 +78,18 @@ export const FilesUpload = () => {
       const existingFiles = selectedImages?.map((f) => f.name);
       files = files.filter((f) => !existingFiles.includes(f.name));
 
-      // Todo: validationは独立させる
-      if (selectedImages.concat(files).length > 5) {
+      if (!canUploadMoreImages(selectedImages, files)) {
         setError(true);
         return;
       }
-      // Todo: file sizeのバリデーション
-      // 今の状態と新しいファイル含めて最大値チェック
 
-      convertToBase64(files[0])
+      convertToBase64WithResize(files[0])
         .then((res) => {
+          // 今の状態と新しいファイル含めて最大値チェック
+          if (!isOverImagesSize(selectedImages, res)) {
+            setError(true);
+            return;
+          }
           setSelectedImages(selectedImages.concat(res));
         })
         .catch((e) => {
@@ -87,19 +130,24 @@ export const FilesUpload = () => {
       const existingFiles = selectedImages?.map((f) => f.name);
       files = files.filter((f) => !existingFiles.includes(f.name));
 
-      const allowExtensions = ".(jpeg|jpg|png)$"; // 許可する拡張子
+      const allowExtensions = ".(jpeg|jpg|png)$";
       files = files.filter((f) => !!f.name.match(allowExtensions));
 
-      // Todo: validationは独立させる
-      if (selectedImages.concat(files).length > 5) {
+      if (!canUploadMoreImages(selectedImages, files)) {
         setError(true);
         return;
       }
 
       // eslint-disable-next-line no-undef
-      Promise.all(files.map((f) => convertToBase64(f)))
+      Promise.all(files.map((f) => convertToBase64WithResize(f)))
         .then((res) => {
+          // 今の状態と新しいファイル含めて最大値チェック
+          if (isOverImagesSize(selectedImages, res)) {
+            setError(true);
+            return;
+          }
           setSelectedImages(selectedImages.concat(res));
+          setError(false);
         })
         .catch((e) => {
           console.log(e);

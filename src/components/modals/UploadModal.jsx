@@ -9,13 +9,13 @@ import {
   ModalOverlay,
   useToast,
 } from "@chakra-ui/react";
-import { colors } from "../styles/common";
-import { FilesUpload } from "./FIlesUpload";
-import { ImagesContext } from "../contexts/ImagesContext";
-import axios from "../axios";
+import { colors } from "../../styles/common";
+import { FilesUpload } from "../FilesUpload";
+import { ImagesContext } from "../../contexts/ImagesContext";
+import axios from "../../axios";
 import { useRouter } from "next/router";
-import { RoomContext } from "../contexts/RoomContext";
-import { OVER_MAX_NUMBER_OF_IMAGES } from "../constants/common";
+import { RoomContext } from "../../contexts/RoomContext";
+import { OVER_MAX_NUMBER_OF_IMAGES } from "../../constants/common";
 // import { sleep } from '../utils/sleep';
 
 export const UploadModal = ({ isOpen, onClose }) => {
@@ -55,7 +55,6 @@ export const UploadModal = ({ isOpen, onClose }) => {
           throw new Error(res.data.message);
         }
         onCustomClose();
-        // await sleep(1000);
         await updateRoom(res.data);
       })
       .catch((err) => console.log(err))
