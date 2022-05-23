@@ -19,7 +19,6 @@ export const FilesUpload = () => {
   const [isDropZone, setDropZone] = useState(false);
   const [hasError, setError] = useState(false);
   const { selectedImages, setSelectedImages } = useContext(ImagesContext);
-  console.log(selectedImages);
 
   const loadImage = (src) => {
     // eslint-disable-next-line no-undef

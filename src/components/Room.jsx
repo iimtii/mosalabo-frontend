@@ -41,7 +41,6 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
 
   const handleSubmit = () => {
     createRoom().then((res) => {
-      console.log(res);
       router.push({
         pathname: "/room/[id]",
         query: { id: res },
