@@ -10,6 +10,12 @@ import {
   onClose,
   src,
   handleSubmit,
+  Modal,
+  ModalOverlay,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  ModalContent,
 } from "@chakra-ui/react";
 import { colors } from "../styles/common";
 import { useEffect } from "react";
@@ -56,15 +62,39 @@ const Home = () => {
               自分でテーマを作る
             </Button>
           </Box>
-
-          <RoomCreateModal
-            isOpen={isOpen}
-            onClose={onClose}
-            src={src}
-            handleSubmit={handleSubmit}
-          />
         </Flex>
       </Center>
+
+      <Modal size={`xs`} isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalBody>
+            <Center paddingY={`30px`}>このテーマで作成する？</Center>
+            <Center>
+              <Image
+                alt={`selected`}
+                // layout={`fill`}
+                objectFit={`contain`}
+                width={`270px`}
+                height={`350px`}
+              />
+            </Center>
+          </ModalBody>
+          <ModalFooter>
+            <Box m={`auto`}>
+              <Button
+                onClick={handleSubmit}
+                bgColor={colors.primary}
+                color={colors.white}
+              >
+                作成
+              </Button>
+            </Box>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
       <Grid
         templateColumns={`repeat(2, 1fr)`}
         width={`68%`}
