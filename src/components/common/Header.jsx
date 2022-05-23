@@ -1,22 +1,10 @@
 import Image from "next/image";
-import {
-  Box,
-  Center,
-  Flex,
-  useDisclosure,
-  Modal,
-  ModalHeader,
-  ModalContent,
-  ModalBody,
-  ModalOverlay,
-  ModalFooter,
-  Button,
-  Heading,
-} from "@chakra-ui/react";
+import { Box, Center, Flex, useDisclosure } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import { typography, colors } from "../../styles/common";
-import Link from "next/link";
+import { typography } from "../../styles/common";
+
 import { useRouter } from "next/router";
+import { TransferAlertModal } from "../modals/TransferAlertModal";
 
 const style = {
   font: css`
@@ -31,7 +19,7 @@ export const Header = () => {
   return (
     <>
       {router.pathname !== "/" ? (
-        <Center as="header" height={"130px"} paddingTop={`40px`}>
+        <Center as="header" height={"120px"}>
           <a onClick={onOpen}>
             <Flex gap={`0px`}>
               <Flex>
@@ -55,7 +43,7 @@ export const Header = () => {
           </a>
         </Center>
       ) : (
-        <Center as="header" height={"130px"} paddingTop={`40px`}>
+        <Center as="header" height={"120px"}>
           <Flex gap={`0px`}>
             <Box>
               <Image
@@ -68,35 +56,7 @@ export const Header = () => {
           </Flex>
         </Center>
       )}
-
-      <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={`true`}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>
-            <Heading size={`lg`}>本当に移動しますか？</Heading>
-            <Heading size={`sm`} opacity={`0.5`}>
-              リンクをコピーせずにホームへ戻るとこのroomへは戻れなくなります
-            </Heading>
-          </ModalHeader>
-          <ModalBody></ModalBody>
-
-          <ModalFooter>
-            <Flex gap={`5rem`}>
-              <Button
-                bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
-                mr={3}
-                onClick={onClose}
-                color={colors.white}
-              >
-                Cancel
-              </Button>
-              <Link href={`/`}>
-                <Button variant="outline">move</Button>
-              </Link>
-            </Flex>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <TransferAlertModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 };

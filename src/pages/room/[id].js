@@ -5,9 +5,6 @@ import {
   Flex,
   Progress,
   useDisclosure,
-  Modal,
-  ModalContent,
-  ModalOverlay,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -15,11 +12,12 @@ import { useEffect, useContext } from "react";
 import { Footer } from "../../components/common/Footer";
 import { Layout } from "../../components/common/Layout";
 import { ShareButton } from "../../components/ShareButton";
-import { UploadModal } from "../../components/UploadModal";
+import { UploadModal } from "../../components/modals/UploadModal";
 import { ProgressBarContext } from "../../contexts/ProgressBarContext";
 import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
 import { motion } from "framer-motion";
+import { LoadingModal } from "../../components/modals/LoadingModal";
 
 const Room = () => {
   const { currentRoom, fetchRoom, isLoading } = useContext(RoomContext);
@@ -35,22 +33,7 @@ const Room = () => {
     fetchRoom(id);
   }, [id]);
 
-  const Loading = () =>
-    isLoading ? (
-      <Modal isOpen={1} isCentered={true} size={`xs`}>
-        <ModalOverlay />
-        <ModalContent>
-          <AspectRatio ratio={1 / 1} zIndex={`1000`} top={`20%`} opacity={`1`}>
-            <Image
-              layout={`fill`}
-              objectFit={`cover`}
-              src="/gif/loading.gif"
-              alt="loading_gif"
-            />
-          </AspectRatio>
-        </ModalContent>
-      </Modal>
-    ) : null;
+  const Loading = () => (isLoading ? <LoadingModal /> : null);
 
   return (
     <Layout>

@@ -1,21 +1,10 @@
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, Button, Center, Flex, useDisclosure } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { colors } from "../styles/common";
 import axios from "../axios";
+import { RoomCreateModal } from "./modals/RoomCreateModal";
 
 const style = {
   box: css`
@@ -68,7 +57,6 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
             src={iconSrc}
             width={`60px`}
             height={`60px`}
-            // layout={`fill`}
             objectFit={`contain`}
           />
         </Box>
@@ -84,36 +72,12 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
           </Button>
         </Box>
 
-        <Modal size={`xs`} isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalCloseButton />
-            <ModalBody>
-              <Center paddingY={`30px`}>このテーマで作成する？</Center>
-              <Center>
-                <Image
-                  alt={`selected`}
-                  src={src}
-                  // layout={`fill`}
-                  objectFit={`contain`}
-                  width={`270px`}
-                  height={`350px`}
-                />
-              </Center>
-            </ModalBody>
-            <ModalFooter>
-              <Box m={`auto`}>
-                <Button
-                  onClick={handleSubmit}
-                  bgColor={colors.primary}
-                  color={colors.white}
-                >
-                  作成
-                </Button>
-              </Box>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
+        <RoomCreateModal
+          isOpen={isOpen}
+          onClose={onClose}
+          src={src}
+          handleSubmit={handleSubmit}
+        />
       </Flex>
     </Center>
   );
