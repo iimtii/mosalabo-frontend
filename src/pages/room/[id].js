@@ -50,7 +50,12 @@ const Room = () => {
           </AspectRatio>
         ) : (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
-            <Box bgColor={`#6495ED`} color={`white`} fontWeight={`extrabold`}>
+            <Box
+              bgColor={`#6495ED`}
+              color={`white`}
+              fontWeight={`extrabold`}
+              opacity={`0.8`}
+            >
               写真をアップロードしてね！
             </Box>
           </AspectRatio>
@@ -58,10 +63,10 @@ const Room = () => {
       </Box>
       <Flex
         maxW={`292.5px`}
-        m={`auto`}
+        marginX={`auto`}
+        marginY={`37px`}
         direction={`column`}
         gap={4}
-        marginY={`30px`}
       >
         <Flex gap={5} justifyContent={`space-around`}>
           <Box marginY={`auto`}>
@@ -87,10 +92,10 @@ const Room = () => {
 
         {/* Todo: animation from prev state to next state */}
         {/* ref: https://github.com/chakra-ui/chakra-ui/issues/68 */}
-        <Box margin={`auto`}>
+        <Box marginY={`20px`}>
           <Progress
             as={motion.div}
-            height={`40px`}
+            height={`8px`}
             width={`292.5px`}
             borderRadius={`10px`}
             value={progressValue}
