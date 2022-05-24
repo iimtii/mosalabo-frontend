@@ -70,7 +70,9 @@ const Room = () => {
       >
         <Flex gap={5} justifyContent={`space-around`}>
           <Box>
-            {!!currentRoom && !!currentRoom.themeImagePath ? (
+            {!!currentRoom &&
+            currentRoom.original_flg &&
+            !!currentRoom.themeImagePath ? (
               <AspectRatio width={`90px`} height={`90px`}>
                 <Image
                   alt="mosaic"
