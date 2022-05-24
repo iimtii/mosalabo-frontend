@@ -159,7 +159,6 @@ export const FilesUpload = () => {
   const style = {
     input: css`
       opacity: 0;
-      viisbility: hidden;
       width: 100%;
       height: 100%;
     `,
@@ -206,7 +205,7 @@ export const FilesUpload = () => {
             />
           </Center>
           <Center css={style.text}>
-            {isSmartPhone() ? <span>タップ</span> : <span>クリック</span>}
+            {isSmartPhone ? <>タップ</> : <>クリック</>}
             してアップロード
           </Center>
         </Box>
