@@ -69,14 +69,16 @@ const Room = () => {
         gap={4}
       >
         <Flex gap={5} justifyContent={`space-around`}>
-          <Box marginY={`auto`}>
+          <Box>
             {!!currentRoom && !!currentRoom.themeImagePath ? (
-              <Image
-                alt="mosaic"
-                src={currentRoom?.themeImagePath}
-                width={`90px`}
-                height={`90px`}
-              />
+              <AspectRatio width={`90px`} height={`90px`}>
+                <Image
+                  alt="mosaic"
+                  src={currentRoom?.themeImagePath}
+                  layout={`fill`}
+                  objectFit={`cover`}
+                />
+              </AspectRatio>
             ) : null}
           </Box>
           <Flex direction={`column`} justifyContent={`end`}>
