@@ -5,6 +5,7 @@ import { Layout } from "../components/common/Layout";
 import { Title } from "../components/Title";
 import { Room } from "../components/Room";
 import { TemplateContext } from "../contexts/TemplateContext";
+import { OriginalRoom } from "../components/OriginalRoom";
 
 const Home = () => {
   const { templates, fetchTemplates } = useContext(TemplateContext);
@@ -16,6 +17,8 @@ const Home = () => {
   return (
     <Layout>
       <Title />
+      <OriginalRoom />
+
       <Grid
         templateColumns={`repeat(2, 1fr)`}
         width={`68%`}
