@@ -64,7 +64,7 @@ const Room = () => {
       <Flex
         maxW={`292.5px`}
         marginX={`auto`}
-        marginY={`37px`}
+        marginY={`39px`}
         direction={`column`}
         gap={6}
       >
