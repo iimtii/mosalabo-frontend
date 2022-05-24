@@ -9,7 +9,6 @@ import { OriginalRoom } from "../components/OriginalRoom";
 
 const Home = () => {
   const { templates, fetchTemplates } = useContext(TemplateContext);
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     fetchTemplates();
@@ -37,8 +36,6 @@ const Home = () => {
           />
         ))}
       </Grid>
-
-      <EnterOriginalModal isOpen={isOpen} onClose={onClose} />
     </Layout>
   );
 };

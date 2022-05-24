@@ -12,6 +12,8 @@ const style = {
   `,
 };
 
+// todo original room と temple roomでレイアウトを分ける
+
 export const Room = ({ id, src, iconSrc, maximumImage }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
