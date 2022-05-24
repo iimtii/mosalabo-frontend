@@ -9,13 +9,13 @@ export const Gallary = ({ src }) => {
     <>
       <AspectRatio
         maxW={`400px`}
-        ratio={4 / 3}
+        ratio={1 / 1}
         onClick={onOpen}
         borderStyle={`solid`}
         borderColor={colors.black}
         borderWidth={`1px`}
       >
-        <Image alt={`img`} src={src} layout={`fill`} objectFit={`contain`} />
+        <Image alt={`img`} src={src} layout={`fill`} objectFit={`cover`} />
       </AspectRatio>
       <GallaryDisplayModal isOpen={isOpen} onClose={onClose} src={src} />
     </>
