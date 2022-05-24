@@ -9,7 +9,7 @@ export const GallaryContextProvider = ({ children }) => {
 
   const fetchGallary = async (uuid) => {
     await axios.get(`/images/${uuid}`).then((res) => {
-      setCurrentGallary({ ...res.data });
+      setCurrentGallary(res.data.images);
     });
   };
 
