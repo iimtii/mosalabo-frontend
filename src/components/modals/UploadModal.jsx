@@ -10,13 +10,12 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { colors } from "../../styles/common";
-import { FilesUpload } from "../FilesUpload";
+import { FilesUpload } from "../FIlesUpload";
 import { ImagesContext } from "../../contexts/ImagesContext";
 import axios from "../../axios";
 import { useRouter } from "next/router";
 import { RoomContext } from "../../contexts/RoomContext";
 import { OVER_MAX_NUMBER_OF_IMAGES } from "../../constants/common";
-// import { sleep } from '../utils/sleep';
 
 export const UploadModal = ({ isOpen, onClose }) => {
   const { selectedImages, resetImages } = useContext(ImagesContext);
@@ -50,6 +49,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
         images: selectedImages,
       })
       .then(async (res) => {
+        // Todo: error時のハンドリングが機能していない
         if (res.data.code === "-1") {
           alert(res.data.message);
           throw new Error(res.data.message);
