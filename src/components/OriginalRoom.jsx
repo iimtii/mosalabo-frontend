@@ -6,10 +6,6 @@ import { OriginalRoomModal } from "./modals/OriginalRoomModal";
 export const OriginalRoom = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleSubmit = () => {
-    console.log("click");
-  };
-
   return (
     <>
       <Center paddingBottom={`55px`}>
@@ -47,11 +43,7 @@ export const OriginalRoom = () => {
         </Flex>
       </Center>
 
-      <OriginalRoomModal
-        isOpen={isOpen}
-        onClose={onClose}
-        handleSubmit={handleSubmit}
-      />
+      <OriginalRoomModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 };
