@@ -48,30 +48,57 @@ const Room = () => {
               objectFit={`cover`}
             />
           </AspectRatio>
-        ) : !!currentRoom && !!currentRoom.themeImagePath ? (
+        ) : (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
-            <Image
-              alt="mosaic"
-              src={currentRoom?.themeImagePath}
-              layout={`fill`}
-              objectFit={`cover`}
-              style={{ opacity: 0.4 }}
-            />
+            <Box
+              bgColor={`#6495ED`}
+              color={`white`}
+              fontWeight={`extrabold`}
+              opacity={`0.8`}
+            >
+              写真をアップロードしてね！
+            </Box>
           </AspectRatio>
-        ) : null}
+        )}
       </Box>
       <Flex
-        paddingY={`44px`}
-        justifyContent={`center`}
-        flexDirection={`column`}
+        maxW={`292.5px`}
+        marginX={`auto`}
+        marginY={`45px`}
+        direction={`column`}
+        gap={4}
       >
+        <Flex gap={5} justifyContent={`space-around`}>
+          <Box>
+            {!!currentRoom && !!currentRoom.themeImagePath ? (
+              <AspectRatio width={`90px`} height={`90px`}>
+                <Image
+                  alt="mosaic"
+                  src={currentRoom?.themeImagePath}
+                  layout={`fill`}
+                  objectFit={`cover`}
+                />
+              </AspectRatio>
+            ) : null}
+          </Box>
+          <Flex direction={`column`} justifyContent={`end`}>
+            <Box color={`#8EA6ED`}>
+              {remainNumner <= 0 ? (
+                <>アート完成！！</>
+              ) : (
+                <>あと{remainNumner}枚！</>
+              )}
+            </Box>
+          </Flex>
+        </Flex>
+
         {/* Todo: animation from prev state to next state */}
         {/* ref: https://github.com/chakra-ui/chakra-ui/issues/68 */}
-        <Box margin={`auto`}>
+        <Box marginY={`20px`}>
           <Progress
             as={motion.div}
-            height={`40px`}
-            width={`288px`}
+            height={`8px`}
+            width={`292.5px`}
             borderRadius={`10px`}
             value={progressValue}
             isAnimated={true}
@@ -79,32 +106,27 @@ const Room = () => {
             isIndeterminate={isIndeterminate}
           />
         </Box>
-        {remainNumner <= 0 ? (
-          <Box m={`auto`}>アート完成！！</Box>
-        ) : (
-          <Box m={`auto`}>アート完成まで：{remainNumner}枚</Box>
-        )}
-      </Flex>
-      <Flex justifyContent={`center`} gap={7}>
-        <Box>
-          <Button
-            paddingY={`30px`}
-            borderRadius={`16px`}
-            color={colors.white}
-            bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
-            onClick={onOpen}
-            height={`93px`}
-            width={`140px`}
-            fontSize={`19px`}
-          >
-            写真を
-            <br />
-            アップロード
-          </Button>
-        </Box>
-        <Box>
-          <ShareButton />
-        </Box>
+        <Flex justifyContent={"center"} maxW={`292.5px`} gap={6}>
+          <Box>
+            <Button
+              paddingY={`30px`}
+              borderRadius={`16px`}
+              color={colors.white}
+              bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
+              onClick={onOpen}
+              height={`90px`}
+              width={`137px`}
+              fontSize={`19px`}
+            >
+              写真を
+              <br />
+              アップロード
+            </Button>
+          </Box>
+          <Box>
+            <ShareButton />
+          </Box>
+        </Flex>
       </Flex>
       <Footer />
 
