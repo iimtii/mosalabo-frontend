@@ -24,7 +24,6 @@ export const RoomCreateModal = ({ isOpen, onClose, src, handleSubmit }) => {
             <Image
               alt={`selected`}
               src={src}
-              // layout={`fill`}
               objectFit={`contain`}
               width={`270px`}
               height={`300px`}

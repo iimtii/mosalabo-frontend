@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useContext } from "react";
+import { Footer } from "../../components/common/Footer";
 import { Layout } from "../../components/common/Layout";
+import { GallaryDisplay } from "../../components/GallaryDisplay";
 import { GallaryContext } from "../../contexts/GallaryContext";
 
 const Gallary = () => {
-  const { currentGallary, fetchGallary, isLoading } =
-    useContext(GallaryContext);
+  const { fetchGallary } = useContext(GallaryContext);
   const router = useRouter();
   const { id } = router.query;
 
@@ -15,7 +16,11 @@ const Gallary = () => {
     fetchGallary(id);
   }, [id]);
 
-  return <Layout>Gallary</Layout>;
+  return (
+    <Layout>
+      <GallaryDisplay />
+    </Layout>
+  );
 };
 
 export default Gallary;

@@ -18,6 +18,7 @@ import { css } from "@emotion/react";
 import { isSmartPhone } from "../../utils/isSmartPhone";
 import { useContext } from "react";
 import { RoomContext } from "../../contexts/RoomContext";
+import { MAX_ORIGINAL_HEIGHT, MAX_ORIGINAL_WIDTH } from "../../constants/room";
 
 const styles = {
   input: css`
@@ -35,12 +36,51 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
     await createOriginalRoom({ ...selectedImage, maximumImage: 100 });
   };
 
+  // Todo: 共通化
+  const loadImage = (src) => {
+    // eslint-disable-next-line no-undef
+    return new Promise((resolve, reject) => {
+      let img = document.createElement("img");
+      img.src = src;
+      img.onload = () => {
+        resolve(img);
+      };
+      img.onerror = () => {
+        reject(img);
+      };
+    });
+  };
+
   const handleChange = (event) => {
     const reader = new FileReader();
-    reader.onload = () => {
-      setSelectedImage({
-        fileName: event.target.files[0].name,
-        themeImageData: reader.result,
+    reader.onload = (e) => {
+      // Todo: 共通化
+      loadImage(e.target.result).then((img) => {
+        let canvas = document.createElement("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx?.drawImage(img, 0, 0);
+
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height && width > MAX_ORIGINAL_WIDTH) {
+          height *= MAX_ORIGINAL_WIDTH / width;
+          width = MAX_ORIGINAL_WIDTH;
+        } else if (width <= height && height > MAX_ORIGINAL_HEIGHT) {
+          width *= MAX_ORIGINAL_HEIGHT / height;
+          height = MAX_ORIGINAL_HEIGHT;
+        }
+        canvas.height = height;
+        canvas.width = width;
+        ctx = canvas.getContext("2d");
+        ctx?.drawImage(img, 0, 0, width, height);
+
+        const data = canvas.toDataURL(event.target.files[0].type);
+
+        setSelectedImage({
+          fileName: event.target.files[0].name,
+          themeImageData: data,
+        });
       });
     };
     reader.readAsDataURL(event.target.files[0]);
