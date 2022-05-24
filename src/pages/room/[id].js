@@ -64,9 +64,9 @@ const Room = () => {
       <Flex
         maxW={`292.5px`}
         marginX={`auto`}
-        marginY={`39px`}
+        marginY={`43px`}
         direction={`column`}
-        gap={6}
+        gap={5}
       >
         <Flex gap={5} justifyContent={`space-around`}>
           <Box marginY={`auto`}>
