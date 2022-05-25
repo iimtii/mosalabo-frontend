@@ -81,9 +81,11 @@ const Room = () => {
                   objectFit={`cover`}
                 />
               </AspectRatio>
-            ) : null}
+            ) : (
+              <Box height={`45px`}></Box>
+            )}
           </Box>
-          <Flex direction={`column`} justifyContent={`end`}>
+          <Flex direction={`column`} justifyContent={`end`} mx={`auto`}>
             <Box color={`#8EA6ED`}>
               {remainNumner <= 0 ? (
                 <>アート完成！！</>
