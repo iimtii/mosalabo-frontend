@@ -82,7 +82,7 @@ const Room = () => {
                 />
               </AspectRatio>
             ) : (
-              <Box height={`45px`}></Box>
+              <Box height={`45px`} />
             )}
           </Box>
           <Flex direction={`column`} justifyContent={`end`} mx={`auto`}>
