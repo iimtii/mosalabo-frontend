@@ -39,7 +39,7 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
   };
 
   return (
-    <Center paddingBottom={`15px`}>
+    <Center paddingBottom={`15px`} onClick={onOpen}>
       <Flex
         css={style.box}
         flexDirection={`column`}
@@ -63,7 +63,6 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
         </Box>
         <Box m={`auto`}>
           <Button
-            onClick={onOpen}
             bgColor={colors.primary}
             color={colors.white}
             borderRadius={`24px`}
