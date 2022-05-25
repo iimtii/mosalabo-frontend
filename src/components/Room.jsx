@@ -12,8 +12,6 @@ const style = {
   `,
 };
 
-// todo original room と temple roomでレイアウトを分ける
-
 export const Room = ({ id, src, iconSrc, maximumImage }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
@@ -23,6 +21,7 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
       const res = await axios.post("template/rooms", {
         themeImagePath: src,
         maximumImage: maximumImage,
+        originalFlag: false,
       });
       return res.data.uuid;
     } catch (e) {
