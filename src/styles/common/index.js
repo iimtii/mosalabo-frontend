@@ -21,9 +21,17 @@ export const typography = {
     font-weight: 600;
     line-height: 30px;
   `,
-  text: `
+  file_upload_text: `
     font-size: 14px;
     font-height: 20px;
     font-weight: 600;
+    font-family: sans-serif;
+  `,
+  modal_title: `
+    font-weight: 600;
+    font-size: 16px;
+  `,
+  text: `
+    font-family: sans-serif;
   `,
 };
