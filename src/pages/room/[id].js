@@ -70,13 +70,13 @@ const Room = () => {
         gap={4}
       >
         <Flex gap={5} justifyContent={`space-around`}>
-          {!!currentRoom &&
-          currentRoom.originalFlg &&
-          !!currentRoom.themeImagePath ? (
-            <Box>
-              <TempleteDisplay src={currentRoom?.themeImagePath} />
-            </Box>
-          ) : null}
+          <Box>
+            {!!currentRoom &&
+            currentRoom.originalFlg &&
+            !!currentRoom.themeImagePath ? (
+              <TempleteDisplay />
+            ) : null}
+          </Box>
           <Flex direction={`column`} justifyContent={`end`}>
             <Box color={`#8EA6ED`}>
               {remainNumner <= 0 ? (
