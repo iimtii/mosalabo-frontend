@@ -69,10 +69,10 @@ const Room = () => {
         gap={4}
       >
         <Flex gap={5} justifyContent={`space-around`}>
-          <Box>
-            {!!currentRoom &&
-            currentRoom.originalFlg &&
-            !!currentRoom.themeImagePath ? (
+          {!!currentRoom &&
+          currentRoom.originalFlg &&
+          !!currentRoom.themeImagePath ? (
+            <Box>
               <AspectRatio width={`90px`} height={`90px`}>
                 <Image
                   alt="mosaic"
@@ -81,9 +81,10 @@ const Room = () => {
                   objectFit={`cover`}
                 />
               </AspectRatio>
-            ) : null}
-          </Box>
-          <Flex direction={`column`} justifyContent={`end`}>
+            </Box>
+          ) : null}
+
+          <Flex direction={`column`} justifyContent={`end`} mx={`auto`}>
             <Box color={`#8EA6ED`}>
               {remainNumner <= 0 ? (
                 <>アート完成！！</>
