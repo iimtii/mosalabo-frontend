@@ -77,7 +77,7 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
         <RoomCreateModal
           isOpen={isOpen}
           onClose={onClose}
-          src={src}
+          iconSrc={iconSrc}
           handleSubmit={handleSubmit}
         />
       </Flex>
