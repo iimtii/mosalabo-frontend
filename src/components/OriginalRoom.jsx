@@ -8,7 +8,7 @@ export const OriginalRoom = () => {
 
   return (
     <>
-      <Center paddingBottom={`55px`}>
+      <Center paddingBottom={`55px`} onClick={onOpen}>
         <Flex
           flexDirection={`column`}
           gap={`22px`}
@@ -31,7 +31,6 @@ export const OriginalRoom = () => {
           </Box>
           <Box m={`auto`}>
             <Button
-              onClick={onOpen}
               borderRadius={`24px`}
               width={`172px`}
               bgColor={colors.primary}
