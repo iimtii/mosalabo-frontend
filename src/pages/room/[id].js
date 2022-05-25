@@ -18,7 +18,7 @@ import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
 import { motion } from "framer-motion";
 import { LoadingModal } from "../../components/modals/LoadingModal";
-import { TempleteDisplay } from "../../components/TempleteDisplay";
+import { TemplateDisplay } from "../../components/TemplateDisplay";
 
 const Room = () => {
   const { currentRoom, fetchRoom, isLoading } = useContext(RoomContext);
@@ -74,7 +74,7 @@ const Room = () => {
             {!!currentRoom &&
             currentRoom.originalFlg &&
             !!currentRoom.themeImagePath ? (
-              <TempleteDisplay />
+              <TemplateDisplay />
             ) : null}
           </Box>
           <Flex direction={`column`} justifyContent={`end`}>

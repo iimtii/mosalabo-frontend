@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 
-export const GallaryDisplayModal = ({ isOpen, onClose, src }) => {
+export const TemplateDisplayModal = ({ isOpen, onClose, src }) => {
   return (
     <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={true}>
       <ModalOverlay />
