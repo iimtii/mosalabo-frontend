@@ -83,8 +83,8 @@ export const UploadModal = ({ isOpen, onClose }) => {
       isCentered={true}
     >
       <ModalOverlay />
-      <ModalContent css={style.text}>
-        <ModalBody>
+      <ModalContent>
+        <ModalBody css={style.text}>
           <FilesUpload />
         </ModalBody>
         <ModalFooter>

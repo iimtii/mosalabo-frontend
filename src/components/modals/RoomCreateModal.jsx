@@ -31,9 +31,9 @@ export const RoomCreateModal = ({ isOpen, onClose, iconSrc, handleSubmit }) => {
   return (
     <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={`true`}>
       <ModalOverlay />
-      <ModalContent css={style.text}>
+      <ModalContent>
         <ModalCloseButton />
-        <ModalBody>
+        <ModalBody css={style.text}>
           <Center paddingY={`30px`} css={style.modal_title}>
             このテーマで作成する？
           </Center>

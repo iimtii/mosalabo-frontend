@@ -109,9 +109,9 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
   return (
     <Modal size={`xs`} isOpen={isOpen} onClose={onCustomClose}>
       <ModalOverlay />
-      <ModalContent css={style.text}>
+      <ModalContent>
         <ModalCloseButton />
-        <ModalBody>
+        <ModalBody css={style.text}>
           <Center paddingY={`30px`} css={style.modal_title}>
             テーマを選択してね
           </Center>
