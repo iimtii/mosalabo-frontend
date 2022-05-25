@@ -18,6 +18,7 @@ import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
 import { motion } from "framer-motion";
 import { LoadingModal } from "../../components/modals/LoadingModal";
+import { TempleteDisplay } from "../../components/TempleteDisplay";
 
 const Room = () => {
   const { currentRoom, fetchRoom, isLoading } = useContext(RoomContext);
@@ -73,14 +74,7 @@ const Room = () => {
             {!!currentRoom &&
             currentRoom.originalFlg &&
             !!currentRoom.themeImagePath ? (
-              <AspectRatio width={`90px`} height={`90px`}>
-                <Image
-                  alt="mosaic"
-                  src={currentRoom?.themeImagePath}
-                  layout={`fill`}
-                  objectFit={`cover`}
-                />
-              </AspectRatio>
+              <TempleteDisplay src={currentRoom?.themeImagePath} />
             ) : null}
           </Box>
           <Flex direction={`column`} justifyContent={`end`}>
