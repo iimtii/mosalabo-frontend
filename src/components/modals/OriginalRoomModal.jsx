@@ -33,7 +33,11 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
   const { createOriginalRoom } = useContext(RoomContext);
 
   const handleSubmit = async () => {
-    await createOriginalRoom({ ...selectedImage, maximumImage: 100 });
+    await createOriginalRoom({
+      ...selectedImage,
+      maximumImage: 100,
+      originalFlg: true,
+    });
   };
 
   // Todo: 共通化

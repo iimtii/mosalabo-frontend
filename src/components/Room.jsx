@@ -21,6 +21,7 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
       const res = await axios.post("template/rooms", {
         themeImagePath: src,
         maximumImage: maximumImage,
+        originalFlag: false,
       });
       return res.data.uuid;
     } catch (e) {
