@@ -159,7 +159,7 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
                   >
                     <Image
                       alt="plus"
-                      src={`/icons/plus.svg`}
+                      src={`/icons/upload-original-image.svg`}
                       height={`100px`}
                       width={`100px`}
                     />

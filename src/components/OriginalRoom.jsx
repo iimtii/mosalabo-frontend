@@ -23,7 +23,7 @@ export const OriginalRoom = () => {
           <Box m={`auto`}>
             <Image
               alt="original"
-              src={`https://mosalabo-images.s3.ap-northeast-1.amazonaws.com/Smile-icon.png`}
+              src={`/icons/smile-icon.svg`}
               width={`60px`}
               height={`60px`}
               objectFit={`contain`}
