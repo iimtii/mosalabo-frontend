@@ -39,7 +39,6 @@ export const Footer = () => {
       as="footer"
       width={`100%`}
       zIndex={`banner`}
-      position={`fixed`}
       bottom={`0`}
     >
       <Flex gap={`68px`}>
