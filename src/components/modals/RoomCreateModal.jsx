@@ -12,7 +12,7 @@ import {
 import { colors } from "../../styles/common";
 import Image from "next/image";
 
-export const RoomCreateModal = ({ isOpen, onClose, src, handleSubmit }) => {
+export const RoomCreateModal = ({ isOpen, onClose, iconSrc, handleSubmit }) => {
   return (
     <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={`true`}>
       <ModalOverlay />
@@ -23,7 +23,7 @@ export const RoomCreateModal = ({ isOpen, onClose, src, handleSubmit }) => {
           <Center>
             <Image
               alt={`selected`}
-              src={src}
+              src={iconSrc}
               objectFit={`contain`}
               width={`270px`}
               height={`300px`}
