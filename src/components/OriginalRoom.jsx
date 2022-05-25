@@ -23,7 +23,7 @@ export const OriginalRoom = () => {
           <Box m={`auto`}>
             <Image
               alt="original"
-              src={`/icons/smile-icon.png`}
+              src={`/icons/smile-icon.svg`}
               width={`60px`}
               height={`60px`}
               objectFit={`contain`}
