@@ -162,14 +162,17 @@ export const FilesUpload = () => {
       width: 100%;
       height: 100%;
     `,
-    text: css`
-      ${typography.text}
+    file_upload_text: css`
+      ${typography.file_upload_text}
+    `,
+    modal_title: css`
+      ${typography.modal_title}
     `,
   };
 
   return (
     <>
-      <Center paddingY={`30px`} fontSize={`xl`}>
+      <Center paddingY={`30px`} css={style.modal_title}>
         写真をアップロード(最大{MAX_NUMBER_OF_IMAGES}枚まで)
       </Center>
       <Box
@@ -204,7 +207,7 @@ export const FilesUpload = () => {
               height={`42px`}
             />
           </Center>
-          <Center css={style.text}>
+          <Center css={style.file_upload_text}>
             {isSmartPhone ? <>タップ</> : <>クリック</>}
             してアップロード
           </Center>
