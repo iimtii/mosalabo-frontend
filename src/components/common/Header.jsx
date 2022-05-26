@@ -52,6 +52,7 @@ export const Header = () => {
         <Center
           as="header"
           height={"120px"}
+          display={`flex`}
           alignItems={`center`}
           paddingTop={`20px`}
         >
