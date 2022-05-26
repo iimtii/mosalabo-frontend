@@ -31,11 +31,11 @@ export const Title = () => {
           color={`white`}
           alignContent={`center`}
           justifyContent={`center`}
-          paddingTop={`19px`}
+          paddingTop={`18px`}
           fontWeight={`semibold`}
-          fontSize={`16px`}
+          fontSize={`19px`}
         >
-          モザイクにするテーマを 選んでね！
+          モザイクのテーマを選んでね
         </Box>
       </Box>
     </Center>

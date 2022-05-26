@@ -33,7 +33,7 @@ export const Header = () => {
               </Flex>
               <Box>
                 <Image
-                  height={`46px`}
+                  height={`58px`}
                   width={`266px`}
                   src="/title/mosalabo_title.svg"
                   alt="title"

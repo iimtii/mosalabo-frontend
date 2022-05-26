@@ -45,7 +45,7 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
         flexDirection={`column`}
         gap={`22px`}
         border={`1px`}
-        borderColor={`#E2E8F0`}
+        borderColor={`#D9DFE7`}
         paddingTop={`20px`}
         paddingBottom={`15px`}
         borderRadius={`12px`}

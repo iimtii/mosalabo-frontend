@@ -39,7 +39,11 @@ export const Footer = () => {
       as="footer"
       width={`100%`}
       zIndex={`banner`}
-      bottom={`0`}
+      marginTop={
+        !!currentRoom && currentRoom.originalFlg && !!currentRoom.themeImagePath
+          ? 0
+          : 4
+      }
     >
       <Flex gap={`68px`}>
         <Button

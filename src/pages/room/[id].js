@@ -39,7 +39,7 @@ const Room = () => {
   return (
     <Layout>
       <Loading />
-      <Box>
+      <Box marginTop={`11px`}>
         {!!currentRoom && !!currentRoom.mosaicImagePath ? (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
             <Image
@@ -65,9 +65,22 @@ const Room = () => {
       <Flex
         maxW={`292.5px`}
         marginX={`auto`}
-        marginY={`45px`}
+        marginTop={
+          !!currentRoom &&
+          currentRoom.originalFlg &&
+          !!currentRoom.themeImagePath
+            ? 10
+            : 12
+        }
+        marginBottom={`9px`}
         direction={`column`}
-        gap={4}
+        gap={
+          !!currentRoom &&
+          currentRoom.originalFlg &&
+          !!currentRoom.themeImagePath
+            ? 4
+            : 7
+        }
       >
         <Flex gap={5} justifyContent={`space-around`}>
           {!!currentRoom &&
@@ -78,13 +91,13 @@ const Room = () => {
             </Box>
           ) : null}
           <Flex direction={`column`} justifyContent={`end`}>
-            <Box color={`#8EA6ED`}>
-              {remainNumner <= 0 ? (
-                <>アート完成！！</>
-              ) : (
-                <>あと{remainNumner}枚！</>
-              )}
-            </Box>
+            {remainNumner <= 0 ? (
+              <Box color={`#8EA6ED`}>アート完成！！</Box>
+            ) : (
+              <Box color={`#8EA6ED`} marginTop={`20px`}>
+                あと{remainNumner}枚！
+              </Box>
+            )}
           </Flex>
         </Flex>
 

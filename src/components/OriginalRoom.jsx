@@ -13,7 +13,7 @@ export const OriginalRoom = () => {
           flexDirection={`column`}
           gap={`9px`}
           border={`1px`}
-          borderColor={`#E2E8F0`}
+          borderColor={`#D9DFE7`}
           paddingTop={`18px`}
           paddingBottom={`16px`}
           borderRadius={`12px`}
