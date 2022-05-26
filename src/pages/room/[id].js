@@ -34,7 +34,7 @@ const Room = () => {
     fetchRoom(id);
   }, [id]);
 
-  const Loading = () => (isLoading ? <LoadingModal /> : null);
+  const Loading = () => <LoadingModal />;
 
   return (
     <Layout>
