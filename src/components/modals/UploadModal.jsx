@@ -9,13 +9,20 @@ import {
   ModalOverlay,
   useToast,
 } from "@chakra-ui/react";
-import { colors } from "../../styles/common";
+import { colors, typography } from "../../styles/common";
 import { FilesUpload } from "../FIlesUpload";
 import { ImagesContext } from "../../contexts/ImagesContext";
 import axios from "../../axios";
 import { useRouter } from "next/router";
 import { RoomContext } from "../../contexts/RoomContext";
 import { OVER_MAX_NUMBER_OF_IMAGES } from "../../constants/common";
+import { css } from "@emotion/react";
+
+const style = {
+  text: css`
+    ${typography.text}
+  `,
+};
 
 export const UploadModal = ({ isOpen, onClose }) => {
   const { selectedImages, resetImages } = useContext(ImagesContext);
@@ -77,7 +84,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalBody>
+        <ModalBody css={style.text}>
           <FilesUpload />
         </ModalBody>
         <ModalFooter>

@@ -11,10 +11,13 @@ import {
 } from "@chakra-ui/react";
 import { CLIPPED_SUCCESS } from "../constants/room";
 import { colors } from "../styles/common";
+import QRCode from "qrcode.react";
+import { css } from "@emotion/react";
 
 export const ShareButton = () => {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const pathname = typeof window !== "undefined" ? location.pathname : "";
 
   const copyLink = () => {
     navigator.clipboard.writeText(location.href);
@@ -25,6 +28,12 @@ export const ShareButton = () => {
       isClosable: true,
       position: "top",
     });
+  };
+
+  const style = {
+    qr_code: css`
+      margin: 23px auto 0 auto;
+    `,
   };
 
   return (
@@ -49,6 +58,9 @@ export const ShareButton = () => {
         <ModalContent top={`26rem`}>
           <ModalBody>
             <Box m={`3px`}>
+              <Box>
+                <QRCode value={pathname} css={style.qr_code} />
+              </Box>
               <Button
                 marginTop={`30px`}
                 color={colors.white}

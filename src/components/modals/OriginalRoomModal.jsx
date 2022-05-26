@@ -11,7 +11,7 @@ import {
   Flex,
   AspectRatio,
 } from "@chakra-ui/react";
-import { colors } from "../../styles/common";
+import { colors, typography } from "../../styles/common";
 import Image from "next/image";
 import { useState } from "react";
 import { css } from "@emotion/react";
@@ -20,11 +20,17 @@ import { useContext } from "react";
 import { RoomContext } from "../../contexts/RoomContext";
 import { MAX_ORIGINAL_HEIGHT, MAX_ORIGINAL_WIDTH } from "../../constants/room";
 
-const styles = {
+const style = {
   input: css`
     opacity: 0;
     width: 100%;
     height: 100%;
+  `,
+  text: css`
+    ${typography.text}
+  `,
+  modal_title: css`
+    ${typography.modal_title}
   `,
 };
 
@@ -105,8 +111,10 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
       <ModalOverlay />
       <ModalContent>
         <ModalCloseButton />
-        <ModalBody>
-          <Center paddingY={`30px`}>テーマを選択してね</Center>
+        <ModalBody css={style.text}>
+          <Center paddingY={`30px`} css={style.modal_title}>
+            テーマを選択してね
+          </Center>
           <Center>
             <Box
               position={`relative`}
@@ -121,7 +129,7 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
                 <input
                   id="input"
                   accept=".jpg, .jpeg, .png"
-                  css={styles.input}
+                  css={style.input}
                   type={`file`}
                   onChange={handleChange}
                 />
@@ -151,7 +159,7 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
                   >
                     <Image
                       alt="plus"
-                      src={`/icons/plus.svg`}
+                      src={`/icons/upload-original-image.svg`}
                       height={`100px`}
                       width={`100px`}
                     />

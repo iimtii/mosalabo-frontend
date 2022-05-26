@@ -18,6 +18,7 @@ import { RoomContext } from "../../contexts/RoomContext";
 import { colors } from "../../styles/common";
 import { motion } from "framer-motion";
 import { LoadingModal } from "../../components/modals/LoadingModal";
+import { TemplateDisplay } from "../../components/TemplateDisplay";
 
 const Room = () => {
   const { currentRoom, fetchRoom, isLoading } = useContext(RoomContext);
@@ -69,20 +70,13 @@ const Room = () => {
         gap={4}
       >
         <Flex gap={5} justifyContent={`space-around`}>
-          <Box>
-            {!!currentRoom &&
-            currentRoom.originalFlg &&
-            !!currentRoom.themeImagePath ? (
-              <AspectRatio width={`90px`} height={`90px`}>
-                <Image
-                  alt="mosaic"
-                  src={currentRoom?.themeImagePath}
-                  layout={`fill`}
-                  objectFit={`cover`}
-                />
-              </AspectRatio>
-            ) : null}
-          </Box>
+          {!!currentRoom &&
+          currentRoom.originalFlg &&
+          !!currentRoom.themeImagePath ? (
+            <Box>
+              <TemplateDisplay />
+            </Box>
+          ) : null}
           <Flex direction={`column`} justifyContent={`end`}>
             <Box color={`#8EA6ED`}>
               {remainNumner <= 0 ? (
