@@ -42,7 +42,7 @@ export const Footer = () => {
       marginTop={
         !!currentRoom && currentRoom.originalFlg && !!currentRoom.themeImagePath
           ? 0
-          : 4
+          : 5
       }
     >
       <Flex gap={`68px`}>

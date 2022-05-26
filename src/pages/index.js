@@ -23,7 +23,6 @@ const Home = () => {
         templateColumns={`repeat(2, 1fr)`}
         width={`68%`}
         marginX={`auto`}
-        marginTop={`0px`}
         columnGap={`40px`}
         rowGap={`28px`}
         justifyContent={`center`}

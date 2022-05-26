@@ -39,7 +39,7 @@ const Room = () => {
   return (
     <Layout>
       <Loading />
-      <Box marginTop={`11px`}>
+      <Box>
         {!!currentRoom && !!currentRoom.mosaicImagePath ? (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
             <Image
@@ -82,7 +82,7 @@ const Room = () => {
             : 7
         }
       >
-        <Flex gap={5} justifyContent={`space-around`}>
+        <Flex gap={5} justifyContent={`space-around`} marginTop={`2px`}>
           {!!currentRoom &&
           currentRoom.originalFlg &&
           !!currentRoom.themeImagePath ? (

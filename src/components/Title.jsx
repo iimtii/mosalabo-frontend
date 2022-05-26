@@ -15,7 +15,7 @@ export const Title = () => {
   };
 
   return (
-    <Center paddingTop={`13px`} paddingBottom={`42px`}>
+    <Center marginBottom={`42px`} marginTop={`2px`}>
       <Box
         css={style.box}
         borderRadius={`16px`}

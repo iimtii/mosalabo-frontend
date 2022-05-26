@@ -19,7 +19,12 @@ export const Header = () => {
   return (
     <>
       {router.pathname !== "/" ? (
-        <Center as="header" height={"120px"} paddingTop={`48px`}>
+        <Center
+          as="header"
+          height={"120px"}
+          display={`flex`}
+          alignItems={`center`}
+        >
           <a onClick={onOpen}>
             <Flex gap={`0px`}>
               <Flex>
@@ -43,7 +48,12 @@ export const Header = () => {
           </a>
         </Center>
       ) : (
-        <Center as="header" height={"120px"} paddingTop={`48px`}>
+        <Center
+          as="header"
+          height={"120px"}
+          display={`flex`}
+          alignItems={`center`}
+        >
           <Flex gap={`0px`}>
             <Box>
               <Image
