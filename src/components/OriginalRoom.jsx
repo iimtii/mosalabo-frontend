@@ -8,17 +8,17 @@ export const OriginalRoom = () => {
 
   return (
     <>
-      <Center paddingBottom={`55px`} onClick={onOpen}>
+      <Center paddingBottom={`40px`} onClick={onOpen}>
         <Flex
           flexDirection={`column`}
-          gap={`22px`}
+          gap={`9px`}
           border={`1px`}
           borderColor={`#E2E8F0`}
-          paddingTop={`30px`}
+          paddingTop={`18px`}
           paddingBottom={`16px`}
           borderRadius={`12px`}
-          height={`180px`}
-          width={`266px`}
+          height={`149px`}
+          width={`280px`}
         >
           <Box m={`auto`}>
             <Image
@@ -32,9 +32,13 @@ export const OriginalRoom = () => {
           <Box m={`auto`}>
             <Button
               borderRadius={`24px`}
-              width={`172px`}
+              height={`38px`}
+              width={`196px`}
               bgColor={colors.primary}
               color={colors.white}
+              fontWeight={`semibold`}
+              fontSize={`15px`}
+              padding={`auto`}
             >
               自分でテーマを作る
             </Button>

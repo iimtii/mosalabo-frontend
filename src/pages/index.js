@@ -22,9 +22,11 @@ const Home = () => {
       <Grid
         templateColumns={`repeat(2, 1fr)`}
         width={`68%`}
-        margin={`auto`}
-        gap={`40px`}
-        paddingBottom={`91px`}
+        marginX={`auto`}
+        marginTop={`0px`}
+        columnGap={`38px`}
+        rowGap={`28px`}
+        justifyContent={`center`}
       >
         {templates.map((template) => (
           <Room

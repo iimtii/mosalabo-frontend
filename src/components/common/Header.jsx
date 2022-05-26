@@ -19,7 +19,7 @@ export const Header = () => {
   return (
     <>
       {router.pathname !== "/" ? (
-        <Center as="header" height={"120px"}>
+        <Center as="header" height={"120px"} paddingTop={`48px`}>
           <a onClick={onOpen}>
             <Flex gap={`0px`}>
               <Flex>
@@ -43,12 +43,12 @@ export const Header = () => {
           </a>
         </Center>
       ) : (
-        <Center as="header" height={"120px"}>
+        <Center as="header" height={"120px"} paddingTop={`48px`}>
           <Flex gap={`0px`}>
             <Box>
               <Image
-                height={`46px`}
-                width={`266px`}
+                height={`58px`}
+                width={`215px`}
                 src="/title/mosalabo_title.svg"
                 alt="title"
               />

@@ -46,11 +46,11 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
         gap={`22px`}
         border={`1px`}
         borderColor={`#E2E8F0`}
-        paddingTop={`30px`}
-        paddingBottom={`16px`}
+        paddingTop={`20px`}
+        paddingBottom={`15px`}
         borderRadius={`12px`}
-        height={`180px`}
-        width={`113px`}
+        height={`163px`}
+        width={`121px`}
       >
         <Box textAlign={`center`}>
           <Image
@@ -61,12 +61,15 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
             objectFit={`contain`}
           />
         </Box>
-        <Box m={`auto`}>
+        <Box mx={`auto`} marginBottom={`20px`}>
           <Button
             bgColor={colors.primary}
             color={colors.white}
             borderRadius={`24px`}
-            width={`72px`}
+            width={`84px`}
+            height={`38px`}
+            padding={`auto`}
+            fontSize={`15px`}
           >
             選ぶ
           </Button>
