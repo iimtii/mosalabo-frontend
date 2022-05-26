@@ -24,7 +24,7 @@ export const Title = () => {
         borderWidth={`1px`}
         bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
         height={`66px`}
-        width={`317px`}
+        width={`294px`}
       >
         <Box
           display={`flex`}
@@ -32,8 +32,8 @@ export const Title = () => {
           alignContent={`center`}
           justifyContent={`center`}
           paddingTop={`19px`}
-          fontWeight={`bold`}
-          fontSize={`17px`}
+          fontWeight={`semibold`}
+          fontSize={`16px`}
         >
           モザイクにするテーマを 選んでね！
         </Box>

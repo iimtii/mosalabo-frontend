@@ -24,7 +24,7 @@ const Home = () => {
         width={`68%`}
         marginX={`auto`}
         marginTop={`0px`}
-        columnGap={`38px`}
+        columnGap={`40px`}
         rowGap={`28px`}
         justifyContent={`center`}
       >

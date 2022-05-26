@@ -18,7 +18,7 @@ export const OriginalRoom = () => {
           paddingBottom={`16px`}
           borderRadius={`12px`}
           height={`149px`}
-          width={`280px`}
+          width={`292px`}
         >
           <Box m={`auto`}>
             <Image

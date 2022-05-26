@@ -50,7 +50,7 @@ export const Room = ({ id, src, iconSrc, maximumImage }) => {
         paddingBottom={`15px`}
         borderRadius={`12px`}
         height={`163px`}
-        width={`121px`}
+        width={`126px`}
       >
         <Box textAlign={`center`}>
           <Image
