@@ -39,7 +39,7 @@ const Room = () => {
   return (
     <Layout>
       <Loading />
-      <Box>
+      <Box marginTop={`5px`}>
         {!!currentRoom && !!currentRoom.mosaicImagePath ? (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
             <Image

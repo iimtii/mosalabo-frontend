@@ -23,7 +23,7 @@ export const Header = () => {
           as="header"
           height={"120px"}
           display={`flex`}
-          alignItems={`center`}
+          paddingTop={`20px`}
         >
           <a onClick={onOpen}>
             <Flex gap={`0px`}>
@@ -48,12 +48,7 @@ export const Header = () => {
           </a>
         </Center>
       ) : (
-        <Center
-          as="header"
-          height={"120px"}
-          display={`flex`}
-          alignItems={`center`}
-        >
+        <Center as="header" height={"120px"} paddingTop={`20px`}>
           <Flex gap={`0px`}>
             <Box>
               <Image
