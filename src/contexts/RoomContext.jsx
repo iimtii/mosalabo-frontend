@@ -3,7 +3,6 @@ import { createContext, useState, useContext } from "react";
 import { ProgressBarContext } from "./ProgressBarContext";
 import { sleep } from "../utils/sleep";
 import { useRouter } from "next/router";
-import Custom404 from "../pages/404";
 
 export const RoomContext = createContext();
 
