@@ -86,10 +86,11 @@ export const FilesUpload = () => {
       convertToBase64WithResize(files[0])
         .then((res) => {
           // 今の状態と新しいファイル含めて最大値チェック
-          if (!isOverImagesSize(selectedImages, res)) {
+          if (isOverImagesSize(selectedImages, [res])) {
             setError(true);
             return;
           }
+          setError(false);
           setSelectedImages(selectedImages.concat(res));
         })
         .catch((e) => {
