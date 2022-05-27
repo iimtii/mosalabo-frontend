@@ -33,6 +33,5 @@ export const typography = {
   `,
   text: `
     font-family: sans-serif;
-    color: colors.primary
   `,
 };
