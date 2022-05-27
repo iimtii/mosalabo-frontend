@@ -55,9 +55,9 @@ export const ShareButton = () => {
 
       <Modal size={`xs`} isOpen={isOpen} borderRadius={`16px`}>
         <ModalOverlay />
-        <ModalContent top={`26rem`}>
+        <ModalContent top={`24rem`}>
           <ModalBody>
-            <Box m={`3px`}>
+            <Box m={`3px`} paddingTop={`5px`}>
               <Box>
                 <QRCode value={pathname} css={style.qr_code} />
               </Box>
