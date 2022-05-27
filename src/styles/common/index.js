@@ -8,6 +8,7 @@ export const colors = {
   purple: "#CBA4EA",
   blue: "#58A6EF",
   progress: "#61A7EF",
+  mosablue: "#84A6EE",
 };
 
 export const typography = {

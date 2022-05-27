@@ -17,7 +17,7 @@ export const TransferAlertModal = ({ isOpen, onClose }) => {
       <ModalContent paddingY={`7px`}>
         <ModalHeader>
           <Flex direction={`column`} gap={`5px`}>
-            <Heading size={`md`} marginLeft={`10px`} color={`#84A6EE`}>
+            <Heading size={`md`} marginLeft={`10px`} color={colors.primary}>
               本当に移動しますか？
             </Heading>
             <Heading size={`xs`} opacity={`0.5`} margin={`10px`}>
@@ -28,7 +28,7 @@ export const TransferAlertModal = ({ isOpen, onClose }) => {
           <Flex justifyContent="space-between" paddingTop={`10px`}>
             <Flex>
               <Button
-                bgColor={`#84A6EE`}
+                bgColor={colors.primary}
                 mr={3}
                 onClick={onClose}
                 color={colors.white}
