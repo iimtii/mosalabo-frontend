@@ -56,7 +56,6 @@ export const UploadModal = ({ isOpen, onClose }) => {
         images: selectedImages,
       })
       .then(async (res) => {
-        // Todo: error時のハンドリングが機能していない
         if (res.data.code === "-1") {
           alert(res.data.message);
           throw new Error(res.data.message);
@@ -64,7 +63,10 @@ export const UploadModal = ({ isOpen, onClose }) => {
         onCustomClose();
         await updateRoom(res.data);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err);
+        router.reload();
+      })
       .finally(() => {
         setLoading(false);
       });
