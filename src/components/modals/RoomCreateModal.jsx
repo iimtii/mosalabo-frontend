@@ -34,7 +34,7 @@ export const RoomCreateModal = ({ isOpen, onClose, iconSrc, handleSubmit }) => {
       <ModalContent>
         <ModalCloseButton />
         <ModalBody css={style.text}>
-          <Center paddingY={`30px`} css={style.modal_title}>
+          <Center paddingY={`35px`} css={style.modal_title}>
             このテーマで作成する？
           </Center>
           <Center>
@@ -42,8 +42,8 @@ export const RoomCreateModal = ({ isOpen, onClose, iconSrc, handleSubmit }) => {
               alt={`selected`}
               src={iconSrc}
               objectFit={`contain`}
-              width={`270px`}
-              height={`300px`}
+              width={`225px`}
+              height={`250px`}
             />
           </Center>
         </ModalBody>
