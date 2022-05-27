@@ -15,7 +15,7 @@ export const Title = () => {
   };
 
   return (
-    <Center paddingTop={`8px`} paddingBottom={`66px`}>
+    <Center marginBottom={`42px`} marginTop={`2px`}>
       <Box
         css={style.box}
         borderRadius={`16px`}
@@ -23,20 +23,19 @@ export const Title = () => {
         borderStyle={`solid`}
         borderWidth={`1px`}
         bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
-        height={`95px`}
-        width={`303px`}
+        height={`66px`}
+        width={`294px`}
       >
         <Box
-          css={style.font}
           display={`flex`}
+          color={`white`}
           alignContent={`center`}
           justifyContent={`center`}
-          paddingTop={`15px`}
+          paddingTop={`18px`}
           fontWeight={`semibold`}
+          fontSize={`19px`}
         >
-          モザイクにするテーマを
-          <br />
-          選んでね！
+          モザイクのテーマを選んでね
         </Box>
       </Box>
     </Center>
