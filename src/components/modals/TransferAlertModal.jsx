@@ -14,14 +14,16 @@ export const TransferAlertModal = ({ isOpen, onClose }) => {
   return (
     <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={`true`}>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent paddingY={`7px`}>
         <ModalHeader>
-          <Heading size={`md`} marginLeft={`10px`}>
-            本当に移動しますか？
-          </Heading>
-          <Heading size={`xs`} opacity={`0.5`} margin={`10px`}>
-            リンクをコピーせずにホームへ戻るとこのroomへは戻れなくなります
-          </Heading>
+          <Flex direction={`column`} gap={`5px`}>
+            <Heading size={`md`} marginLeft={`10px`} color={`#84A6EE`}>
+              本当に移動しますか？
+            </Heading>
+            <Heading size={`xs`} opacity={`0.5`} margin={`10px`}>
+              リンクをコピーせずにホームへ戻るとこのroomへは戻れなくなります
+            </Heading>
+          </Flex>
 
           <Flex justifyContent="space-between" paddingTop={`10px`}>
             <Flex>
