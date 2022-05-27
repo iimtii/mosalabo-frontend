@@ -33,12 +33,15 @@ export const PreviewImages = () => {
               position={`absolute`}
               right={`4%`}
               top={`35%`}
-              border={`2px`}
+              border={`1px`}
               borderStyle={`solid`}
               borderRadius={`full`}
-              size={`xs`}
+              size={`sm`}
               onClick={() => handleDelete(index)}
               bgColor={`white`}
+              _active={{
+                bgColor: "white",
+              }}
             />
           </Box>
         ))}
