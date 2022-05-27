@@ -19,6 +19,7 @@ import { colors } from "../../styles/common";
 import { motion } from "framer-motion";
 import { LoadingModal } from "../../components/modals/LoadingModal";
 import { TemplateDisplay } from "../../components/TemplateDisplay";
+import { ArtDisplay } from "../../components/ArtDisplay";
 
 const Room = () => {
   const { currentRoom, fetchRoom, isLoading } = useContext(RoomContext);
@@ -41,14 +42,7 @@ const Room = () => {
       <Loading />
       <Box marginTop={`5px`}>
         {!!currentRoom && !!currentRoom.mosaicImagePath ? (
-          <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
-            <Image
-              alt="mosaic"
-              src={currentRoom?.mosaicImagePath}
-              layout={`fill`}
-              objectFit={`cover`}
-            />
-          </AspectRatio>
+          <ArtDisplay />
         ) : (
           <AspectRatio maxW={`400px`} ratio={4 / 3} margin={`auto`}>
             <Box
