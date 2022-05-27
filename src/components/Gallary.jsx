@@ -12,7 +12,7 @@ export const Gallary = ({ src }) => {
         ratio={1 / 1}
         onClick={onOpen}
         borderStyle={`solid`}
-        borderColor={colors.black}
+        borderColor={colors.gray}
         borderWidth={`1px`}
       >
         <Image alt={`img`} src={src} layout={`fill`} objectFit={`cover`} />
