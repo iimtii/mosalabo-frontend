@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export const TemplateDisplayModal = ({ isOpen, onClose, src }) => {
   return (
-    <Modal size={`xs`} isOpen={isOpen} onClose={onClose} isCentered={true}>
+    <Modal size={`xl`} isOpen={isOpen} onClose={onClose} isCentered={true}>
       <ModalOverlay />
       <ModalContent>
         <ModalCloseButton zIndex={1} />
