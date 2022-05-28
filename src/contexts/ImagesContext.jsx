@@ -20,7 +20,6 @@ export const ImagesContextProvider = ({ children }) => {
   const updateSelectedImages = (newImages) => {
     const nextImagesLength = selectedImages.length + newImages.length;
     if (nextImagesLength > MAX_NUMBER_OF_SELECTED_IMAGE) {
-      // Todo: nextImagesが20になるようにnewImagesを減らす
       const nextImagesSize =
         MAX_NUMBER_OF_SELECTED_IMAGE - selectedImages.length;
       newImages = newImages.slice(0, nextImagesSize);
