@@ -1,4 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { DragAndDropErrorContextProvider } from "../contexts/DragAndDropErrorContext";
 import { GallaryContextProvider } from "../contexts/GallaryContext";
 import { ImagesContextProvider } from "../contexts/ImagesContext";
 import { ProgressBarContextProvider } from "../contexts/ProgressBarContext";
@@ -11,11 +12,13 @@ function MyApp({ Component, pageProps }) {
       <TemplateContextProvider>
         <ProgressBarContextProvider>
           <RoomContextProvider>
-            <ImagesContextProvider>
-              <GallaryContextProvider>
-                <Component {...pageProps} />
-              </GallaryContextProvider>
-            </ImagesContextProvider>
+            <DragAndDropErrorContextProvider>
+              <ImagesContextProvider>
+                <GallaryContextProvider>
+                  <Component {...pageProps} />
+                </GallaryContextProvider>
+              </ImagesContextProvider>
+            </DragAndDropErrorContextProvider>
           </RoomContextProvider>
         </ProgressBarContextProvider>
       </TemplateContextProvider>

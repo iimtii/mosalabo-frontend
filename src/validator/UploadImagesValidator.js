@@ -1,7 +1,10 @@
-import { MAX_IMAGE_BYTES, MAX_NUMBER_OF_IMAGES } from "../constants/room";
+import {
+  MAX_IMAGE_BYTES,
+  MAX_NUMBER_OF_SELECTED_IMAGES,
+} from "../constants/room";
 
-export const canUploadMoreImages = (selectedImages, files) => {
-  return !(selectedImages.length + files.length > MAX_NUMBER_OF_IMAGES);
+export const isMoreThanAndEqual20Images = (selectedImages) => {
+  return selectedImages.length >= MAX_NUMBER_OF_SELECTED_IMAGES;
 };
 
 export const isOverImagesSize = (selectedImages, newImages) => {
