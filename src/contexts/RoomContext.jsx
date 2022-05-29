@@ -3,6 +3,7 @@ import { createContext, useState, useContext } from "react";
 import { ProgressBarContext } from "./ProgressBarContext";
 import { sleep } from "../utils/sleep";
 import { useRouter } from "next/router";
+import { NotFoundContext } from "./NotFoundContext";
 
 export const RoomContext = createContext();
 
@@ -12,6 +13,7 @@ export const RoomContextProvider = ({ children }) => {
   const { updateProgressBar, setIndeterminate } =
     useContext(ProgressBarContext);
   const [isLoading, setLoading] = useState(false);
+  const { setNotFound } = useContext(NotFoundContext);
 
   const fetchRoom = async (uuid) => {
     await axios
@@ -19,10 +21,11 @@ export const RoomContextProvider = ({ children }) => {
       .then((res) => {
         setCurrentRoom({ ...res.data });
         updateProgressBar(res.data);
+        setNotFound(false);
       })
       .catch((e) => {
         console.error(e);
-        router.push("/404");
+        setNotFound(true);
       });
   };
 
