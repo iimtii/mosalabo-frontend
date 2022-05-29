@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Center, Spinner } from "@chakra-ui/react";
 import { colors, typography } from "../styles/common";
 import { css } from "@emotion/react";
 import { PreviewImages } from "./PreviewImages";
@@ -12,12 +12,27 @@ import {
   isOverImagesSize,
 } from "../validator/UploadImagesValidator";
 
+const style = {
+  input: css`
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  `,
+  file_upload_text: css`
+    ${typography.file_upload_text}
+  `,
+  modal_title: css`
+    ${typography.modal_title}
+  `,
+};
+
 // ref: https://www.section.io/engineering-education/nextjs-dnd-file-upload/
 export const DragAndDropFiles = () => {
   // Memo: isDropZoneで枠のcssを変える??
   const [isDropZone, setDropZone] = useState(false);
   const [hasError, setError] = useState(false);
   const { selectedImages, updateSelectedImages } = useContext(ImagesContext);
+  const [isLoading, setLoading] = useState(false);
 
   const loadImage = (src) => {
     // eslint-disable-next-line no-undef
@@ -133,6 +148,7 @@ export const DragAndDropFiles = () => {
         return;
       }
 
+      setLoading(true);
       // eslint-disable-next-line no-undef
       Promise.all(files.map((f) => convertToBase64WithResize(f)))
         .then((res) => {
@@ -144,23 +160,12 @@ export const DragAndDropFiles = () => {
         })
         .catch((e) => {
           console.log(e);
+        })
+        .finally(() => {
+          setLoading(false);
         });
       setDropZone(false);
     }
-  };
-
-  const style = {
-    input: css`
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-    `,
-    file_upload_text: css`
-      ${typography.file_upload_text}
-    `,
-    modal_title: css`
-      ${typography.modal_title}
-    `,
   };
 
   return (
@@ -203,16 +208,29 @@ export const DragAndDropFiles = () => {
           </Center>
         </Box>
         <Box width={`full`} height={`full`}>
-          <label>
-            <input
-              type={`file`}
-              multiple
-              onChange={onChangeImages}
-              name="images"
-              css={style.input}
-              accept="image/png, image/jpeg, image/jpg"
-            />
-          </label>
+          {isLoading ? (
+            <Box
+              position={`relative`}
+              top={`85%`}
+              left={`50%`}
+              transform={`translate(-50%, -50%)`}
+              textAlign={`center`}
+            >
+              <Spinner />
+              <Box>Now loading...</Box>
+            </Box>
+          ) : (
+            <label>
+              <input
+                type={`file`}
+                multiple
+                onChange={onChangeImages}
+                name="images"
+                css={style.input}
+                accept="image/png, image/jpeg, image/jpg"
+              />
+            </label>
+          )}
         </Box>
       </Box>
       <PreviewImages />
