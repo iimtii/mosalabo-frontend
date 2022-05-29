@@ -6,7 +6,7 @@ import {
   Progress,
   useDisclosure,
 } from "@chakra-ui/react";
-import Image from "next/image";
+import NotFound from "../404";
 import { useRouter } from "next/router";
 import { useEffect, useContext } from "react";
 import { Footer } from "../../components/common/Footer";
@@ -20,6 +20,7 @@ import { motion } from "framer-motion";
 import { LoadingModal } from "../../components/modals/LoadingModal";
 import { TemplateDisplay } from "../../components/TemplateDisplay";
 import { ArtDisplay } from "../../components/ArtDisplay";
+import { NotFoundContext } from "../../contexts/NotFoundContext";
 
 const Room = () => {
   const { currentRoom, fetchRoom, isLoading } = useContext(RoomContext);
@@ -28,6 +29,7 @@ const Room = () => {
     useContext(ProgressBarContext);
   const router = useRouter();
   const { id } = router.query;
+  const { isNotFound } = useContext(NotFoundContext);
   const remainNumner = currentRoom?.maximumImage - currentRoom?.numberOfImage;
 
   useEffect(() => {
@@ -36,6 +38,8 @@ const Room = () => {
   }, [id]);
 
   const Loading = () => (isLoading ? <LoadingModal /> : null);
+
+  if (isNotFound) return <NotFound />;
 
   return (
     <Layout>

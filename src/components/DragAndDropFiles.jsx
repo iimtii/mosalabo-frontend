@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { Box, Center } from "@chakra-ui/react";
 import { colors, typography } from "../styles/common";
-import { MAX_NUMBER_OF_IMAGES } from "../constants/room";
 import { css } from "@emotion/react";
 import { PreviewImages } from "./PreviewImages";
 import { isSmartPhone } from "../utils/isSmartPhone";
@@ -9,16 +8,16 @@ import Image from "next/image";
 import { ImagesContext } from "../contexts/ImagesContext";
 import { MAX_HEIGHT, MAX_WIDTH } from "../constants/room";
 import {
-  canUploadMoreImages,
+  isMoreThanAndEqual20Images,
   isOverImagesSize,
 } from "../validator/UploadImagesValidator";
 
 // ref: https://www.section.io/engineering-education/nextjs-dnd-file-upload/
-export const FilesUpload = () => {
+export const DragAndDropFiles = () => {
   // Memo: isDropZoneで枠のcssを変える??
   const [isDropZone, setDropZone] = useState(false);
   const [hasError, setError] = useState(false);
-  const { selectedImages, setSelectedImages } = useContext(ImagesContext);
+  const { selectedImages, updateSelectedImages } = useContext(ImagesContext);
 
   const loadImage = (src) => {
     // eslint-disable-next-line no-undef
@@ -75,13 +74,8 @@ export const FilesUpload = () => {
   const onChangeImages = (e) => {
     let files = [...e.target.files];
     if (files && files.length > 0) {
-      const existingFiles = selectedImages?.map((f) => f.name);
+      const existingFiles = selectedImages?.map((f) => f.filename);
       files = files.filter((f) => !existingFiles.includes(f.name));
-
-      if (!canUploadMoreImages(selectedImages, files)) {
-        setError(true);
-        return;
-      }
 
       convertToBase64WithResize(files[0])
         .then((res) => {
@@ -90,8 +84,7 @@ export const FilesUpload = () => {
             setError(true);
             return;
           }
-          setError(false);
-          setSelectedImages(selectedImages.concat(res));
+          updateSelectedImages(res);
         })
         .catch((e) => {
           console.log(e);
@@ -128,13 +121,14 @@ export const FilesUpload = () => {
 
     let files = [...e.dataTransfer.files];
     if (files && files.length > 0) {
-      const existingFiles = selectedImages?.map((f) => f.name);
+      const existingFiles = selectedImages?.map((f) => f.filename);
+
       files = files.filter((f) => !existingFiles.includes(f.name));
 
       const allowExtensions = ".(jpeg|jpg|png)$";
       files = files.filter((f) => !!f.name.match(allowExtensions));
 
-      if (!canUploadMoreImages(selectedImages, files)) {
+      if (isMoreThanAndEqual20Images(selectedImages)) {
         setError(true);
         return;
       }
@@ -142,13 +136,11 @@ export const FilesUpload = () => {
       // eslint-disable-next-line no-undef
       Promise.all(files.map((f) => convertToBase64WithResize(f)))
         .then((res) => {
-          // 今の状態と新しいファイル含めて最大値チェック
           if (isOverImagesSize(selectedImages, res)) {
             setError(true);
             return;
           }
-          setSelectedImages(selectedImages.concat(res));
-          setError(false);
+          updateSelectedImages(res);
         })
         .catch((e) => {
           console.log(e);
@@ -173,9 +165,6 @@ export const FilesUpload = () => {
 
   return (
     <>
-      <Center paddingY={`30px`} css={style.modal_title}>
-        写真をアップロード(最大{MAX_NUMBER_OF_IMAGES}枚まで)
-      </Center>
       <Box
         position={`relative`}
         width={`100%`}

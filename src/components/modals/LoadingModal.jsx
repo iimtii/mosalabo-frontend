@@ -32,7 +32,7 @@ export const LoadingModal = () => {
         <Image
           layout={`fill`}
           objectFit={`cover`}
-          src="/gif/loading.gif"
+          src={`/gif/loading.gif?${Date.now()}`}
           alt="loading"
         />
       </Box>
