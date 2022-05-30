@@ -90,12 +90,22 @@ export const DragAndDropFiles = () => {
     let files = [...e.target.files];
     if (files && files.length > 0) {
       const existingFiles = selectedImages?.map((f) => f.filename);
+
       files = files.filter((f) => !existingFiles.includes(f.name));
 
-      convertToBase64WithResize(files[0])
+      const allowExtensions = ".(jpeg|jpg|png)$";
+      files = files.filter((f) => !!f.name.match(allowExtensions));
+
+      if (isMoreThanAndEqual20Images(selectedImages)) {
+        setError(true);
+        return;
+      }
+
+      setLoading(true);
+      // eslint-disable-next-line no-undef
+      Promise.all(files.map((f) => convertToBase64WithResize(f)))
         .then((res) => {
-          // 今の状態と新しいファイル含めて最大値チェック
-          if (isOverImagesSize(selectedImages, [res])) {
+          if (isOverImagesSize(selectedImages, res)) {
             setError(true);
             return;
           }
@@ -103,7 +113,11 @@ export const DragAndDropFiles = () => {
         })
         .catch((e) => {
           console.log(e);
+        })
+        .finally(() => {
+          setLoading(false);
         });
+      setDropZone(false);
     }
   };
 
