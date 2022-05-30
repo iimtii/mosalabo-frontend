@@ -230,13 +230,8 @@ export const DragAndDropFiles = () => {
               transform={`translate(-50%, -50%)`}
               textAlign={`center`}
             >
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color={colors.primary}
-                size="lg"
-              />
+              <Spinner />
+              <Box>Now loading...</Box>
             </Box>
           ) : (
             <label>

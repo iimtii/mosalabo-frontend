@@ -160,8 +160,8 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
                     <Image
                       alt="plus"
                       src={`/icons/upload-original-image.svg`}
-                      height={`100px`}
-                      width={`100px`}
+                      height={`45px`}
+                      width={`45px`}
                     />
                     <Box>
                       {isSmartPhone ? <>タップ</> : <>クリック</>}
