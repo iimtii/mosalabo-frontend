@@ -21,9 +21,10 @@ import { LoadingModal } from "../../components/modals/LoadingModal";
 import { TemplateDisplay } from "../../components/TemplateDisplay";
 import { ArtDisplay } from "../../components/ArtDisplay";
 import { NotFoundContext } from "../../contexts/NotFoundContext";
+import { LoadingContext } from "../../contexts/LoadingContext ";
 
 const Room = () => {
-  const { currentRoom, fetchRoom, isLoading } = useContext(RoomContext);
+  const { currentRoom, fetchRoom } = useContext(RoomContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { progressValue, hasStripe, isIndeterminate } =
     useContext(ProgressBarContext);
@@ -31,6 +32,7 @@ const Room = () => {
   const { id } = router.query;
   const { isNotFound } = useContext(NotFoundContext);
   const remainNumner = currentRoom?.maximumImage - currentRoom?.numberOfImage;
+  const { isLoading } = useContext(LoadingContext);
 
   useEffect(() => {
     if (!id) return;

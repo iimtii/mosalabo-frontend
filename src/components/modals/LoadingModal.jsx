@@ -4,6 +4,7 @@ import { colors } from "../../styles/common";
 
 export const LoadingModal = () => {
   const timestamp = new Date();
+
   return (
     <>
       <Box

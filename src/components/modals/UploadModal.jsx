@@ -20,6 +20,7 @@ import { OVER_MAX_NUMBER_OF_IMAGES } from "../../constants/common";
 import { css } from "@emotion/react";
 import { MAX_NUMBER_OF_IMAGES } from "../../constants/room";
 import { DragAndDropErrorContext } from "../../contexts/DragAndDropErrorContext";
+import { LoadingContext } from "../../contexts/LoadingContext ";
 
 const style = {
   text: css`
@@ -29,9 +30,10 @@ const style = {
 
 export const UploadModal = ({ isOpen, onClose }) => {
   const { selectedImages, resetImages } = useContext(ImagesContext);
-  const { updateRoom, setLoading, currentRoom } = useContext(RoomContext);
+  const { updateRoom, currentRoom } = useContext(RoomContext);
   const { hasOverNumberError } = useContext(DragAndDropErrorContext);
   const toast = useToast();
+  const { setLoading } = useContext(LoadingContext);
 
   const router = useRouter();
 
@@ -54,7 +56,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
     }
 
     const roomId = router.asPath.split("/").pop();
-    // setLoading(true);
+    setLoading(true);
     await axios
       .post("/images", {
         roomId,
