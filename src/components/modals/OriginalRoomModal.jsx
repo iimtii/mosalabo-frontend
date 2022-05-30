@@ -113,16 +113,16 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
         <ModalCloseButton />
         <ModalBody css={style.text}>
           <Center paddingY={`30px`} css={style.modal_title}>
-            テーマを選択してね
+            テーマを１つ選んでね
           </Center>
           <Center>
             <Box
               position={`relative`}
               height={`260px`}
               width={`260px`}
-              border={`1px`}
+              border={`8px`}
               borderStyle={`dotted`}
-              borderColor={colors.black}
+              borderColor={colors.light_gray}
               zIndex={1}
             >
               <label>
@@ -160,8 +160,8 @@ export const OriginalRoomModal = ({ isOpen, onClose }) => {
                     <Image
                       alt="plus"
                       src={`/icons/upload-original-image.svg`}
-                      height={`45px`}
-                      width={`45px`}
+                      height={`60px`}
+                      width={`60px`}
                     />
                     <Box>
                       {isSmartPhone ? <>タップ</> : <>クリック</>}

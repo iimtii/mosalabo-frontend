@@ -94,10 +94,10 @@ export const UploadModal = ({ isOpen, onClose }) => {
       <ModalOverlay />
       <ModalContent>
         <ModalBody css={style.text}>
-          <Center paddingY={`30px`} css={style.modal_title}>
+          {/* <Center paddingY={`15px`} css={style.modal_title}>
             写真をアップロード(最大{MAX_NUMBER_OF_IMAGES}枚まで)
-          </Center>
-          <Center>
+          </Center> */}
+          <Center paddingY={`25px`}>
             <Box
               display={`inline`}
               color={hasOverNumberError ? colors.error : colors.black}
@@ -109,7 +109,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
           </Center>
           <DragAndDropFiles />
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter paddingBottom={`25px`}>
           <Box m={`auto`}>
             <Button
               bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
