@@ -1,16 +1,9 @@
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Box } from "@chakra-ui/react";
 import { colors } from "../../styles/common";
-import { sleep } from "../../utils/sleep";
 
 export const LoadingModal = () => {
-  const [isOpacity, setOpacity] = useState(false);
-  useEffect(() => {
-    sleep(2000).then(() => {
-      setOpacity(true);
-    });
-  }, []);
+  const timestamp = new Date();
   return (
     <>
       <Box
@@ -18,7 +11,6 @@ export const LoadingModal = () => {
         width={`100vw`}
         height={`100vh`}
         top={0}
-        opacity={isOpacity ? `0.6` : `0`}
         zIndex={5}
         bgColor={`${colors.white}`}
       />
@@ -32,7 +24,7 @@ export const LoadingModal = () => {
         <Image
           layout={`fill`}
           objectFit={`cover`}
-          src={`/gif/loading.gif?${Date.now()}`}
+          src={`/gif/loading.gif?${timestamp.getTime()}`}
           alt="loading"
         />
       </Box>
