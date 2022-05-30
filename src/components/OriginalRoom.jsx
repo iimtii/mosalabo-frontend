@@ -8,7 +8,7 @@ export const OriginalRoom = () => {
 
   return (
     <>
-      <Center paddingBottom={`40px`} onClick={onOpen}>
+      <Center paddingBottom={`40px`}>
         <Flex
           flexDirection={`column`}
           gap={`9px`}
@@ -19,6 +19,7 @@ export const OriginalRoom = () => {
           borderRadius={`12px`}
           height={`149px`}
           width={`292px`}
+          onClick={onOpen}
         >
           <Box m={`auto`}>
             <Image
