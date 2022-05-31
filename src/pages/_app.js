@@ -6,6 +6,7 @@ import { NotFoundContextProvider } from "../contexts/NotFoundContext";
 import { ProgressBarContextProvider } from "../contexts/ProgressBarContext";
 import { RoomContextProvider } from "../contexts/RoomContext";
 import { TemplateContextProvider } from "../contexts/TemplateContext";
+import { LoadingContextProvider } from "../contexts/LoadingContext";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -14,13 +15,15 @@ function MyApp({ Component, pageProps }) {
         <NotFoundContextProvider>
           <ProgressBarContextProvider>
             <RoomContextProvider>
-              <DragAndDropErrorContextProvider>
-                <ImagesContextProvider>
-                  <GallaryContextProvider>
-                    <Component {...pageProps} />
-                  </GallaryContextProvider>
-                </ImagesContextProvider>
-              </DragAndDropErrorContextProvider>
+              <LoadingContextProvider>
+                <DragAndDropErrorContextProvider>
+                  <ImagesContextProvider>
+                    <GallaryContextProvider>
+                      <Component {...pageProps} />
+                    </GallaryContextProvider>
+                  </ImagesContextProvider>
+                </DragAndDropErrorContextProvider>
+              </LoadingContextProvider>
             </RoomContextProvider>
           </ProgressBarContextProvider>
         </NotFoundContextProvider>

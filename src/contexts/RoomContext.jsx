@@ -12,7 +12,6 @@ export const RoomContextProvider = ({ children }) => {
   const [currentRoom, setCurrentRoom] = useState(null);
   const { updateProgressBar, setIndeterminate } =
     useContext(ProgressBarContext);
-  const [isLoading, setLoading] = useState(false);
   const { setNotFound } = useContext(NotFoundContext);
 
   const fetchRoom = async (uuid) => {
@@ -57,11 +56,9 @@ export const RoomContextProvider = ({ children }) => {
     <RoomContext.Provider
       value={{
         currentRoom,
-        isLoading,
         fetchRoom,
         createOriginalRoom,
         updateRoom,
-        setLoading,
       }}
     >
       {children}

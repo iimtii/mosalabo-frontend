@@ -20,6 +20,7 @@ import { OVER_MAX_NUMBER_OF_IMAGES } from "../../constants/common";
 import { css } from "@emotion/react";
 import { MAX_NUMBER_OF_IMAGES } from "../../constants/room";
 import { DragAndDropErrorContext } from "../../contexts/DragAndDropErrorContext";
+import { LoadingContext } from "../../contexts/LoadingContext";
 
 const style = {
   text: css`
@@ -29,9 +30,10 @@ const style = {
 
 export const UploadModal = ({ isOpen, onClose }) => {
   const { selectedImages, resetImages } = useContext(ImagesContext);
-  const { updateRoom, setLoading, currentRoom } = useContext(RoomContext);
+  const { updateRoom, currentRoom } = useContext(RoomContext);
   const { hasOverNumberError } = useContext(DragAndDropErrorContext);
   const toast = useToast();
+  const { setLoading } = useContext(LoadingContext);
 
   const router = useRouter();
 
@@ -92,10 +94,10 @@ export const UploadModal = ({ isOpen, onClose }) => {
       <ModalOverlay />
       <ModalContent>
         <ModalBody css={style.text}>
-          <Center paddingY={`30px`} css={style.modal_title}>
+          {/* <Center paddingY={`15px`} css={style.modal_title}>
             写真をアップロード(最大{MAX_NUMBER_OF_IMAGES}枚まで)
-          </Center>
-          <Center>
+          </Center> */}
+          <Center paddingY={`25px`}>
             <Box
               display={`inline`}
               color={hasOverNumberError ? colors.error : colors.black}
@@ -107,7 +109,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
           </Center>
           <DragAndDropFiles />
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter paddingBottom={`25px`}>
           <Box m={`auto`}>
             <Button
               bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}

@@ -196,7 +196,7 @@ export const DragAndDropFiles = () => {
             : colors.light_gray
         }
         borderStyle={`dotted`}
-        borderRadius={`6px`}
+        borderWidth={`8px`}
         onDragEnter={(e) => handleDragEnter(e)}
         onDragOver={(e) => handleDragOver(e)}
         onDragLeave={(e) => handleDragLeave(e)}
@@ -212,13 +212,16 @@ export const DragAndDropFiles = () => {
             <Image
               src={`/icons/upload.svg`}
               alt="upload"
-              width={`42px`}
-              height={`42px`}
+              width={`60px`}
+              height={`60px`}
             />
           </Center>
-          <Center css={style.file_upload_text}>
+          <Center css={style.file_upload_text} textAlign={`center`}>
+            <br />
             {isSmartPhone ? <>タップ</> : <>クリック</>}
-            してアップロード
+            して
+            <br />
+            写真をアップロード
           </Center>
         </Box>
         <Box width={`full`} height={`full`}>
@@ -230,13 +233,8 @@ export const DragAndDropFiles = () => {
               transform={`translate(-50%, -50%)`}
               textAlign={`center`}
             >
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color={colors.primary}
-                size="lg"
-              />
+              <Spinner />
+              <Box>Now loading...</Box>
             </Box>
           ) : (
             <label>
