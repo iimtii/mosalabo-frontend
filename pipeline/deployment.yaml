@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: teamf-frontend-dev
-  namespace: cc-tech-newgrad-f-backend-dev
+  namespace: cc-tech-newgrad-f-frontend-dev
   name: teamf-frontend-dev
 spec:
   replicas: 1
