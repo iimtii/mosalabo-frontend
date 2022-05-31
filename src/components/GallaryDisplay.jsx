@@ -1,13 +1,33 @@
 import { useContext } from "react";
 import { GallaryContext } from "../contexts/GallaryContext";
-import { Center, Grid } from "@chakra-ui/react";
+import { Grid, Box, AspectRatio } from "@chakra-ui/react";
 import { Gallary } from "./Gallary";
+import Image from "next/image";
 
 export const GallaryDisplay = () => {
   const { currentGallary } = useContext(GallaryContext);
 
   if (!currentGallary || currentGallary.length === 0)
-    return <Center>No images exist...</Center>;
+    return (
+      // <Center
+      //   color={colors.primary}
+      //   fontWeight={`extrabold`}
+      //   fontSize={`25px`}
+      //   marginY={`230px`}
+      // >
+      //   まだ画像がありません
+      // </Center>
+      <Box paddingTop={`19%`} m={`auto`} maxW={`250px`}>
+        <AspectRatio ratio={2 / 3}>
+          <Image
+            layout={`fill`}
+            objectFit={`cover`}
+            src={`/Gallary/NoImages.svg`}
+            alt="NoImages"
+          />
+        </AspectRatio>
+      </Box>
+    );
 
   return (
     <Grid templateColumns={`repeat(3, 1fr)`}>

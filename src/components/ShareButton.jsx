@@ -68,7 +68,7 @@ export const ShareButton = () => {
                 width={`100%`}
                 onClick={copyLink}
               >
-                Copy Link
+                リンクをコピー
               </Button>
 
               <Button
@@ -77,7 +77,7 @@ export const ShareButton = () => {
                 width={`100%`}
                 onClick={onClose}
               >
-                Cancel
+                キャンセル
               </Button>
             </Box>
           </ModalBody>

@@ -110,7 +110,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
           <DragAndDropFiles />
         </ModalBody>
         <ModalFooter paddingBottom={`25px`}>
-          <Box m={`auto`}>
+          <Box m={`auto`} width={`60%`}>
             <Button
               bgGradient={`linear(to-r, ${colors.pink} 2.08%, ${colors.purple} 45.11%, ${colors.blue} 100%)`}
               color={colors.white}
@@ -121,11 +121,11 @@ export const UploadModal = ({ isOpen, onClose }) => {
               fontSize={`xl`}
               // Todo: disabled時のhoverアクションを消す
             >
-              Upload
+              アップロード
             </Button>
 
             <Button color={colors.black} width={`100%`} onClick={onCustomClose}>
-              Cancel
+              キャンセル
             </Button>
           </Box>
         </ModalFooter>
