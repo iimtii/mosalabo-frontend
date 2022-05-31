@@ -9,14 +9,6 @@ export const GallaryDisplay = () => {
 
   if (!currentGallary || currentGallary.length === 0)
     return (
-      // <Center
-      //   color={colors.primary}
-      //   fontWeight={`extrabold`}
-      //   fontSize={`25px`}
-      //   marginY={`230px`}
-      // >
-      //   まだ画像がありません
-      // </Center>
       <Box paddingTop={`19%`} m={`auto`} maxW={`250px`}>
         <AspectRatio ratio={2 / 3}>
           <Image
