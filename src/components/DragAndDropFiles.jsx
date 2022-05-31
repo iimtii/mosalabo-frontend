@@ -228,13 +228,18 @@ export const DragAndDropFiles = () => {
           {isLoading ? (
             <Box
               position={`relative`}
-              top={`85%`}
+              top={`93%`}
               left={`50%`}
               transform={`translate(-50%, -50%)`}
               textAlign={`center`}
             >
-              <Spinner />
-              <Box>Now loading...</Box>
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color={colors.primary}
+                size="md"
+              />
             </Box>
           ) : (
             <label>
