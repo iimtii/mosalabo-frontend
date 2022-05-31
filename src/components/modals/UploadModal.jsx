@@ -67,7 +67,6 @@ export const UploadModal = ({ isOpen, onClose }) => {
           alert(res.data.message);
           throw new Error(res.data.message);
         }
-        onCustomClose();
         await updateRoom(res.data);
       })
       .catch((err) => {
@@ -76,6 +75,7 @@ export const UploadModal = ({ isOpen, onClose }) => {
       })
       .finally(() => {
         setLoading(false);
+        onCustomClose();
       });
   };
 
