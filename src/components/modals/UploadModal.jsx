@@ -20,7 +20,7 @@ import { OVER_MAX_NUMBER_OF_IMAGES } from "../../constants/common";
 import { css } from "@emotion/react";
 import { MAX_NUMBER_OF_IMAGES } from "../../constants/room";
 import { DragAndDropErrorContext } from "../../contexts/DragAndDropErrorContext";
-import { LoadingContext } from "../../contexts/LoadingContext ";
+import { LoadingContext } from "../../contexts/LoadingContext";
 
 const style = {
   text: css`

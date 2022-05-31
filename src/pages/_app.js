@@ -6,7 +6,7 @@ import { NotFoundContextProvider } from "../contexts/NotFoundContext";
 import { ProgressBarContextProvider } from "../contexts/ProgressBarContext";
 import { RoomContextProvider } from "../contexts/RoomContext";
 import { TemplateContextProvider } from "../contexts/TemplateContext";
-import { LoadingContextProvider } from "../contexts/LoadingContext ";
+import { LoadingContextProvider } from "../contexts/LoadingContext";
 
 function MyApp({ Component, pageProps }) {
   return (

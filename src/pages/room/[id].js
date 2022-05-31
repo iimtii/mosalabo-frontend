@@ -21,7 +21,7 @@ import { LoadingModal } from "../../components/modals/LoadingModal";
 import { TemplateDisplay } from "../../components/TemplateDisplay";
 import { ArtDisplay } from "../../components/ArtDisplay";
 import { NotFoundContext } from "../../contexts/NotFoundContext";
-import { LoadingContext } from "../../contexts/LoadingContext ";
+import { LoadingContext } from "../../contexts/LoadingContext";
 
 const Room = () => {
   const { currentRoom, fetchRoom } = useContext(RoomContext);
@@ -138,7 +138,6 @@ const Room = () => {
         </Flex>
       </Flex>
       <Footer />
-
       <UploadModal isOpen={isOpen} onClose={onClose} />
     </Layout>
   );
