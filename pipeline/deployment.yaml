@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: teamf-frontend-dev
-  namespace: cc-tech-newgrad-f-backend-dev
+  namespace: cc-tech-newgrad-f-frontend-dev
   name: teamf-frontend-dev
 spec:
   replicas: 1
@@ -30,7 +30,7 @@ spec:
             - containerPort: 3000
           resources:
             limits:
-              cpu: 800m
+              cpu: 100m
               memory: 1000Mi
             requests:
               cpu: 500m
