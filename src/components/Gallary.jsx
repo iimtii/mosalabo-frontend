@@ -5,7 +5,6 @@ import { GallaryDisplayModal } from "./modals/GallaryDisplayModal";
 
 export const Gallary = ({ src }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <>
       <AspectRatio
