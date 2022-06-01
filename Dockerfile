@@ -22,7 +22,7 @@ WORKDIR /app/${USER_NAME}
 
 ENV NODE_ENV production
 RUN addgroup --system --gid 1001 ${GROUP_NAME}
-RUN adduser --system --uid 1001 ${USER_NAME}
+RUN adduser --system -g ${GROUP_NAME} --uid 1001 ${USER_NAME}
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/next.config.js ./
