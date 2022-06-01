@@ -1,8 +1,6 @@
-# FROM artifactory.rakuten-it.com/dockerhub/node:16-slim
+FROM artifactory.rakuten-it.com/dockerhub/node:16-slim AS deps
 # Install dependencies only when needed
-FROM node:alpine AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+# FROM node:alpine 
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
@@ -15,13 +13,13 @@ COPY --from=deps /app/node_modules ./node_modules
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
 # Production image, copy all the files and run next
-FROM node:alpine AS runner
+FROM artifactory.rakuten-it.com/dockerhub/node:16-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
 
 # You only need to copy next.config.js if you are NOT using the default configuration
-# COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 # ★1 nodejsじゃなくてnodeをuser:groupに指定
 COPY --from=builder --chown=node:node /app/.next ./.next
