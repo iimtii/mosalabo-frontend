@@ -25,6 +25,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=node:node /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+RUN mkdir -p /.next/cache/images
 
 USER node
 
