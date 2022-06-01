@@ -29,7 +29,7 @@ RUN adduser ${USER_NAME} ${GROUP_NAME}
 COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 # ★1 nodejsじゃなくてnodeをuser:groupに指定
-COPY --from=builder --chown=${USER_NAME}:${GROUP_NAME} /app/.next ./.next
+COPY --from=builder --chown=1001:1001 /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
