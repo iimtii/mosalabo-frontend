@@ -12,14 +12,20 @@ import Image from "next/image";
 import { colors } from "../../styles/common";
 
 export const GallaryDisplayModal = ({ isOpen, onClose, src }) => {
+  const getFilename = (path) => {
+    const extension = path.split(".").slice(-1)[0];
+    // Todo: change filename got from path
+    return "gallary." + extension;
+  };
   const onSavegallary = async () => {
     await fetch(src)
       .then((res) => res.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(new Blob([blob]));
         const link = document.createElement("a");
+        const filename = getFilename(src);
         link.href = url;
-        link.setAttribute("download", `gallary.jpg`);
+        link.setAttribute("download", filename);
         document.body.appendChild(link);
         link.click();
         link.parentNode.removeChild(link);

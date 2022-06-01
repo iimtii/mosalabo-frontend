@@ -24,9 +24,7 @@ export const GallaryDisplay = () => {
   return (
     <Grid templateColumns={`repeat(3, 1fr)`}>
       {currentGallary.map((img, index) => (
-        <>
-          <Gallary src={img.path} key={index} />
-        </>
+        <Gallary src={img.path} key={index} />
       ))}
     </Grid>
   );
