@@ -18,11 +18,10 @@ FROM artifactory.rakuten-it.com/dockerhub/node:16-slim AS runner
 ARG GROUP_NAME=nodejs
 ARG USER_NAME=nextjs
 
-WORKDIR /app/${USER_NAME}
+WORKDIR /app/$USER_NAME
 
 ENV NODE_ENV production
-RUN addgroup -g 1001 ${GROUP_NAME}
-RUN adduser -g ${GROUP_NAME} -u 1001 -m ${USER_NAME}
+RUN groupadd -g 1001 $GROUP_NAME && useradd -g $GROUP_NAME -u 1001 -m $USER_NAME
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/next.config.js ./
@@ -32,7 +31,7 @@ COPY --from=builder --chown=${USER_NAME}:${GROUP_NAME} /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-USER ${USER_NAME}
+USER $USER_NAME
 
 EXPOSE 3000
 
