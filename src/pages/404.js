@@ -1,5 +1,3 @@
-import { Header } from "../components/common/Header";
-import { Layout } from "../components/common/Layout";
 import { Center, Flex, Box, AspectRatio } from "@chakra-ui/react";
 import Image from "next/image";
 

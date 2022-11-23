@@ -29,7 +29,7 @@ export const RoomContextProvider = ({ children }) => {
   };
 
   const updateRoom = async (data) => {
-    await sleep(5000); // Memot: This is gif showing time
+    await sleep(5000); // Memo: This is gif showing time
     setCurrentRoom({ ...data });
     updateProgressBar(data);
     setIndeterminate(true);

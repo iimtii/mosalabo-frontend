@@ -1,7 +1,5 @@
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useContext } from "react";
-import { Footer } from "../../components/common/Footer";
 import { Layout } from "../../components/common/Layout";
 import { GallaryDisplay } from "../../components/GallaryDisplay";
 import { GallaryContext } from "../../contexts/GallaryContext";
