@@ -41,9 +41,11 @@ export const DragAndDropFiles = () => {
       img.src = src;
       img.onload = () => {
         resolve(img);
+        img.remove();
       };
       img.onerror = () => {
         reject(img);
+        img.remove();
       };
     });
   };
@@ -75,7 +77,7 @@ export const DragAndDropFiles = () => {
           ctx?.drawImage(img, 0, 0, width, height);
 
           const data = canvas.toDataURL(f.type);
-
+          canvas.remove();
           resolve({
             filename: f.name,
             data: data,
