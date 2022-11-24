@@ -24,7 +24,7 @@ import { NotFoundContext } from "../../contexts/NotFoundContext";
 import { LoadingContext } from "../../contexts/LoadingContext";
 
 const Room = () => {
-  const { currentRoom, fetchRoom } = useContext(RoomContext);
+  const { currentRoom, fetchRoom, resetRoom } = useContext(RoomContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { progressValue, hasStripe, isIndeterminate } =
     useContext(ProgressBarContext);
@@ -37,6 +37,9 @@ const Room = () => {
   useEffect(() => {
     if (!id) return;
     fetchRoom(id);
+    return () => {
+      resetRoom();
+    };
   }, [id]);
 
   const Loading = () => (isLoading ? <LoadingModal /> : null);

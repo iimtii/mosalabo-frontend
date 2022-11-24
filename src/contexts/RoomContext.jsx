@@ -52,6 +52,10 @@ export const RoomContextProvider = ({ children }) => {
       });
   };
 
+  const resetRoom = () => {
+    setCurrentRoom(null);
+  };
+
   return (
     <RoomContext.Provider
       value={{
@@ -59,6 +63,7 @@ export const RoomContextProvider = ({ children }) => {
         fetchRoom,
         createOriginalRoom,
         updateRoom,
+        resetRoom,
       }}
     >
       {children}
