@@ -2,13 +2,13 @@
 const withPWA = require("next-pwa");
 
 const nextConfig = {
-  pwa: {
-    dest: "public",
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === "development",
-    buildExcludes: [/.*\.js\.map/],
-  },
+  // pwa: {
+  //   dest: "public",
+  //   register: true,
+  //   skipWaiting: true,
+  //   disable: process.env.NODE_ENV === "development",
+  //   buildExcludes: [/.*\.js\.map/],
+  // },
   images: {
     domains: ["mosalabo-images.s3.ap-northeast-1.amazonaws.com"],
   },
